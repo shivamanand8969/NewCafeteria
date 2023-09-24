@@ -6,8 +6,21 @@ const page = () => {
     let data=[123456,234567]
     let [pin,setPin]=useState('');
     let [isable,setIsAble]=useState();
-   
- 
+   const [name, setname] = useState("Burger34")
+   const [price, setPrice] = useState(123)
+   const [quantity, setQuantity] = useState(4)
+    let addCart=async()=>{
+      let data=await fetch("/api/cartitems",{
+        method:'POST',
+        headers:{
+          "Content-type":"application/json"
+        },
+        body:JSON.stringify({name,price,quantity})
+      })
+      data=await data.json();
+      alert(data.msg)
+  }
+
     let handlecheck=async()=>{
        
         if(data.includes(parseInt(pin))){
@@ -167,7 +180,7 @@ const page = () => {
           <button className="flex ml-auto text-white px-2 bg-green-600 border-0 py-2 lg:px-6 focus:outline-none hover:bg-green-800 rounded">
             Order
           </button>
-          <button className="flex ml-auto text-white px-2  bg-red-600 border-0 py-2 lg:px-6 focus:outline-none hover:bg-red-800 rounded">
+          <button onClick={addCart} className="flex ml-auto text-white px-2  bg-red-600 border-0 py-2 lg:px-6 focus:outline-none hover:bg-red-800 rounded">
            Add To Cart
           </button>
         </div>
