@@ -84,7 +84,7 @@ const Header = ({data}) => {
                     </ul>
                 </div> <div><div className='flex items-center gap-5' onClick={toglecart}><BsCartFill /></div>
                 </div>
-                <div ref={ref} className=' absolute top-0 right-0 h-[100vh] bg-white px-8 py-10 text-black transform transition-transform translate-x-full '>
+                <div ref={ref} className=' absolute top-0 right-[335px] lg:right-[-24px] h-[100vh] ml-3 bg-white px-8 py-[-10px] text-black transform transition-transform translate-x-full '>
                     <h2 className='font-bold text-xl'>Shopping Cart</h2>
                     <span onClick={toglecart} className='absolute top-5 right-2 cursor-pointer text-2xl' ><AiFillCloseCircle /></span>
                     <ol className='overflow-y-scroll '>
