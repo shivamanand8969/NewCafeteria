@@ -8,7 +8,6 @@ import Footer from './components/Footer'
 const page = async () => {
   let data1=await fetch("http://127.0.0.1:3000/api/cartitems");
   data1=await data1.json();
-
   return (
     <div className='bg-[#141449] '>
       <Header data={data1.data}/>

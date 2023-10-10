@@ -3,11 +3,10 @@ import Link from 'next/link'
 import React, { useRef, useState } from 'react'
 import { BsCartFill } from 'react-icons/bs';
 import { AiFillCloseCircle, AiOutlineMinusCircle, AiOutlinePlusCircle } from 'react-icons/ai';
+import Image from 'next/image';
 
 
 const Header = ({data}) => {
-    
-    
     
     let [active, setActive] = useState(false)
     let ref = useRef()
@@ -91,16 +90,17 @@ const Header = ({data}) => {
                         {
                             data.map((value)=>(
                                 <li>
-                                <div className='item flex my-5'>
+                                <div className='item flex my-5 justify-between bg-slate-800 text-white px-3 py-4 rounded-sm'>
+                                
                                     <div className='w-2/3 font-semibold'>{value.name} </div>
-                                    <div className='flex font-semibold items-center justify-center w-1/3'><span><AiOutlineMinusCircle className='text-red-500 cursor-pointer m-1' /></span><span>{value.qunatity}</span><span><AiOutlinePlusCircle className='text-red-500 cursor-pointer m-1' /></span></div>
+                                    <div className='flex font-semibold items-center justify-center w-1/3'><span><AiOutlineMinusCircle className='text-red-500 cursor-pointer m-1'/></span><div>{value.quantity}</div><span><AiOutlinePlusCircle className='text-red-500 cursor-pointer m-1' /></span></div>
                                 </div>
                             </li>
                             ))
                         }
                       
                     </ol>
-                    <button className='bg-slate-700 text-white hover:bg-slate-900 font-sans rounded px-5 py-3'>CheckOut</button>
+                    <button className='bg-slate-700 text-white hover:bg-slate-900 font-sans rounded px-5 py-3 mr-2'>CheckOut</button>
                     <button className='bg-slate-700 text-white hover:bg-slate-900 font-sans rounded px-5 py-3'>ClearCart</button>
                 </div>
 

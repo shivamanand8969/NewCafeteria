@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link';
 import React from 'react'
 
 const Product =async () => {
@@ -16,15 +17,16 @@ const Product =async () => {
                 </div>
                 <div className='pt-2'>
                     <div className='mb-2'>
-                        <h4>{value.prname}</h4>
-                        <p>{value.desc}</p>
+                        <h4 className='text-xl font-bold capitalize font-sans'>{value.prname}</h4>
+                        <p className='mt-2 line-clamp-3'>{value.desc}</p>
                     </div>
                     <div className='flex gap-2'>
                     <p className='text-red-500 line-through '><span>₹</span>{value.prPrice}</p>
                     <p className='text-green-500'> {value.discount}% Off</p>
-                    <p className='text-yellow-400 '><span>₹</span>{value.prPrice-((value.discount/100)*value.prPrice)}</p>
+                    <p className='text-yellow-400 truncate w-[5rem]'><span>₹</span>{value.prPrice-((value.discount/100)*value.prPrice)}</p>
 
                     </div>
+                    <Link href={`singleproduct/${value._id}`}><button className='px-8 py-3 mt-5 bg-red-600 text-xl text-white ease-linear duration-100 hover:bg-red-800 rounded-md '>Order</button></Link>
                 </div>
             </li>
             ))
