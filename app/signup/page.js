@@ -28,11 +28,11 @@ const signup = () => {
         })
         datafetche = await datafetche.json();
 
-        redirect('/signup')
+        redirect('/login')
     }
     return (
         <>
-            <div className='w-full h-[146vh] lg:h-[100vh] bg-slate-900 flex justify-center items-center '>
+            <div className='w-full h-[146vh] lg:h-[100vh] bg-slate-900 flex justify-center items-center'>
                 <div className='w-[80vw] h-[80vh] flex flex-col  justify-center items-center'>
                     <form className='flex gap-3 flex-col lg:flex-row  ' action={handleSubmit}>
                         <div className='flex flex-col gap-3 '>

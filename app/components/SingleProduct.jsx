@@ -12,12 +12,15 @@ const SingleProduct = ({data1}) => {
    const [price, setPrice] = useState(data1.prPrice)
    const [quantity, setQuantity] = useState(1)
     let addCart=async()=>{
+      let fetchuserid=await fetch("/api/mydata");
+      fetchuserid=await fetchuserid.json();
+      
       let data=await fetch("/api/cartitems",{
         method:'POST',
         headers:{
           "Content-type":"application/json"
         },
-        body:JSON.stringify({name,desc:data1.desc,imageurl:data1.imageurl,quantity,price})
+        body:JSON.stringify({userId:fetchuserid.data._id,name,desc:data1.desc,imageurl:data1.imageurl,quantity,price})
       })
       data=await data.json();
       alert(data.msg)

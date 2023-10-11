@@ -1,6 +1,8 @@
 import mongoose, { Schema } from "mongoose";
+import User from "./User";
+
 let Cartschema=new mongoose.Schema({
-    userId:{type:mongoose.Schema.Types.ObjectId,ref:"user"},
+    userId:{type:mongoose.Schema.Types.ObjectId,ref:"User"},
     name:{type:String},
     desc:{type:String},
     imageurl:{type:String},
@@ -8,4 +10,4 @@ let Cartschema=new mongoose.Schema({
     price:{type:Number},
 
 },{timestamps:true})
-export default mongoose.models.Cartitems || mongoose.model("Cartitems",Cartschema)
+export default mongoose.models.Cartitem || mongoose.model("Cartitem",Cartschema)
