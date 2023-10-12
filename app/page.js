@@ -9,7 +9,7 @@ const page = async () => {
  
   return (
     <div className='bg-[#141449] '>
-      <Header/>
+     
       <div className='pt-16 pb-4 md:pt-20'><Mainsection/></div>
       <div className=' pb-10 px-3'><Cart/></div>
       <div><Product/></div>

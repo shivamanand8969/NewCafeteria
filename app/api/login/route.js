@@ -18,7 +18,7 @@ export let POST=async(req)=>{
     id:checkusername._id,
     username:checkusername.username
    }
-   let token=JWT.sign(tokendata,"tokenname",{expiresIn:"2h"});
+   let token=JWT.sign(tokendata,"tokenname");
    let response=NextResponse.json({"msg":"Login Successfully"});
    response.cookies.set("usercookies",token,{
     httpOnly:true

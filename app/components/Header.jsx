@@ -9,7 +9,7 @@ import Image from 'next/image';
 const Header = () => {
     let [active, setActive] = useState(false)
     return (
-        <header className='bg-blue-800 fixed top-0 left-0 w-full z-50 text-white font-sans'>
+        <header className='bg-blue-800 fixed top-0 left-0 w-full z-50 text-white font-sans shadow-2xl'>
             <nav className='sm:hidden container relative h-14 flex justify-between items-center'>
                 <div>
                     <Link href='' className='text-2xl '>BUR<span className='text-yellow-300'>GUR</span></Link>

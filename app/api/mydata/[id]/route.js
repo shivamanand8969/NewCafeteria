@@ -4,11 +4,11 @@ import { NextResponse } from "next/server";
 
 const { getDataFromToken } = require("@/app/helper/getDataFromToken");
 
-export let GET=async (req)=>{
+export let GET=async (req,{params})=>{
+    let {id}=params;
     await Connect();
     try{
-        let id=await getDataFromToken(req);
-        let data=await User.findOne({_id:id});
+        let data=await User.findById(id);
         return NextResponse.json({data});
     }
     catch(e){
