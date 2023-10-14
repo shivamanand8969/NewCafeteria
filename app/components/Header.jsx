@@ -9,10 +9,10 @@ import Image from 'next/image';
 const Header = () => {
     let [active, setActive] = useState(false)
     return (
-        <header className='bg-blue-800 fixed top-0 left-0 w-full z-50 text-white font-sans shadow-2xl'>
+        <header className='bg-[#141449] fixed top-0 left-0 w-full z-50 text-white font-sans shadow-2xl'>
             <nav className='sm:hidden container relative h-14 flex justify-between items-center'>
                 <div>
-                    <Link href='' className='text-2xl '>BUR<span className='text-yellow-300'>GUR</span></Link>
+                    <Link href='/' className='text-2xl '>HO<span className='text-yellow-300'>ME</span></Link>
                 </div>
                 {active ?
                     <div className='absolute top-0 left-0 w-full py-14 bg-blue-800 border-b border-yellow-400'>
@@ -24,10 +24,10 @@ const Header = () => {
                                 <Link className=' hover:text-yellow-500 ease-in duration-200' href='/'>About Us</Link>
                             </li>
                             <li>
-                                <Link className=' hover:text-yellow-500 ease-in duration-200' href='/'>Menu</Link>
+                                <Link className=' hover:text-yellow-500 ease-in duration-200' href='/myorder'>My Order</Link>
                             </li>
                             <li>
-                                <Link className=' hover:text-yellow-500 ease-in duration-200' href='/'>cart <BsCartFill /></Link>
+                                <Link className=' hover:text-yellow-500 ease-in duration-200' href='/cart'>cart</Link>
                             </li>
                             <li>
                                 <Link className=' hover:text-yellow-500 ease-in duration-200' href='/'>Contact</Link>
@@ -44,16 +44,14 @@ const Header = () => {
 
             </nav>
 
-            <nav className='max-sm:hidden container bg-blue-800 relative h-14 flex justify-between items-center '>
+            <nav className='max-sm:hidden container  bg-[#141449] relative h-14 flex justify-between items-center '>
                 <div>
-                    <Link href='' className='text-2xl'>BUR<span className='text-yellow-300'>GUR</span></Link>
+                    <Link href='/' className='text-2xl ml-4'>HO<span className='text-yellow-300'>ME</span></Link>
                 </div>
 
                 <div className=''>
                     <ul className='flex  text-center gap-5 text-xl py-10'>
-                        <li>
-                            <Link className=' hover:text-yellow-500 ease-in duration-200' href='/'>Home</Link>
-                        </li>
+                       
                         <li>
                             <Link className=' hover:text-yellow-500 ease-in duration-200' href='/'>About Us</Link>
                         </li>
@@ -64,10 +62,10 @@ const Header = () => {
                             <Link className=' hover:text-yellow-500 ease-in duration-200' href='/'>Review</Link>
                         </li>
                         <li>
-                            <Link className=' hover:text-yellow-500 ease-in duration-200' href='/'>Contact</Link>
+                            <Link className=' hover:text-yellow-500 ease-in duration-200' href='/myorder'>My order</Link>
                         </li>
                     </ul>
-                </div> <div><Link href={'/cart'} className='flex items-center gap-5 text-3xl '><BsCartFill/></Link>
+                </div> <div><Link href={'/cart'} className=' text-3xl relative right-0'><BsCartFill/></Link>
                 </div>
 
             </nav>

@@ -3,6 +3,8 @@ import Link from 'next/link'
 import React from 'react'
 import {cookies} from 'next/headers';
 import  JWT from 'jsonwebtoken';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 const cart = async () => {
     let data1=await fetch("http://127.0.0.1:3000/api/cartitems",{cache:"no-store"});
     data1=await data1.json();
@@ -12,18 +14,19 @@ const cart = async () => {
    
   return (
   <>
+  <Header/>
   <div className='mt-3'>
-    <h1 className='text-green-500 text-4xl text-center'>Your Cart Item:-</h1>
+    <h1 className='text-white bg-slate-900 py-3 text-4xl text-center mt-14'>Your Cart Item</h1>
   </div>
-   <div className='px-3 grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-4 mt-3'>
+   <div className='px-3 bg-[#141449] grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-4'>
    
     {
       data1.data.map((value,key)=>(value.userId==id?
-        <div key={key} className=' bg-white px-3 border-gray-500 border rounded-sm shadow-lg flex flex-col h-[40vh] w-full'>
+        <div key={key} className=' bg-[#141449] px-3 border-gray-500 border rounded-sm shadow-lg flex flex-col h-[40vh] w-full'>
         <div className='flex justify-center  gap-2 h-44 w-full'>
-            <div className='w-[48%] bg-white h-40 flex justify-center  items-center'><Image src={`/${value.imageurl}`} height={600} width={600}/></div>
+            <div className='w-[48%] bg-[#141449] h-40 flex justify-center  items-center'><Image src={`/${value.imageurl}`} height={600} width={600}/></div>
             <div className='w-[48%] h-32 flex flex-col gap-1 mt-5 ml-4'>
-                <p className='text-base text-gray-900 capitalize font-medium font-sans line-clamp-2'>{value.desc}</p>
+                <p className='text-base text-white capitalize font-medium font-sans line-clamp-2'>{value.desc}</p>
                  <p className='text-xl text-yellow-500  font-bold'>{value.name}</p>
                 <p className='text-blue-500 font-bold text-2xl '>₹ {value.price} </p>
                 </div>  
@@ -37,6 +40,9 @@ const cart = async () => {
     </div>:''
       ))
     }
+   </div>
+   <div className='bg-[#141449] py-8'>
+   <Footer/>
    </div>
   </>
   )

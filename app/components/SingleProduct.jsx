@@ -58,7 +58,7 @@ const SingleProduct = (props) => {
 
   return (
     <>
-      <section className="text-gray-600 body-font overflow-hidden bg-blue-800">
+      <section className="text-gray-600  body-font overflow-hidden bg-[#141449]">
         <div className="container py-16 flex flex-col lg:flex-row gap-2 px-2">
         <div className='flex flex-col'>
         <div className='flex flex-col items-center gap-2 mt-2'>

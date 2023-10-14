@@ -18,7 +18,7 @@ export let POST=async (req)=>{
    let newdata=new Product(data);
    try{
     await newdata.save();
-    return NextResponse.json({newdata,"msg":"data inserted successfully"})
+    return NextResponse.json({newdata,"msg":"Product added successfully"})
    }
    catch(e){
     return NextResponse.json({"msg":e.messsage})

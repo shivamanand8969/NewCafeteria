@@ -19,7 +19,7 @@ const adminlogin = () => {
         data=await data.json();
         alert(data)
         if(data==='ok'){
-            router.push("/api/admin/layoutdesign/addproduct")
+            router.push("/api/admin/layoutdesign")
         }
         }
   return (

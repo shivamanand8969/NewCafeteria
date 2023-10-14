@@ -23,12 +23,10 @@ const additem = () => {
       body:JSON.stringify({prname,prPrice,desc,discount,imageurl})
     })
     data=await data.json();
-    console.log(data.msg);
-    // redirect('api/admin/addproduct')
+    redirect('/api/admin/layoutdesign')
   }
   return (
    <>
-   
     <div className='h-auto lg:h-[100vh] lg:w-full lg:flex lg:justify-center lg:items-center bg-slate-900'>
       <div>
         <form method='POST' className='px-3' action={handleSubmit}>
