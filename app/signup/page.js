@@ -2,6 +2,7 @@ import { redirect } from 'next/navigation'
 import React from 'react'
 import { writeFile } from 'fs/promises'
 import { join } from 'path'
+import Header from '../components/Header'
 
 const signup = () => {
     let handleSubmit = async (data) => {
@@ -18,53 +19,65 @@ const signup = () => {
         let buffer = Buffer.from(bytes);
         let path = join('./public', profileimage.name);
         await writeFile(path, buffer);
-
-        let datafetche = await fetch('http://127.0.0.1:3000/api/signup', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ username, email, password, number, district, address, pincode, profileimage: profileimage.name })
-        })
-        datafetche = await datafetche.json();
-
-        redirect('/login')
+    
+        if(true){
+        if (username.length > 1 && email.length > 1 && password.length > 8 && number.length >= 10 && district.length > 1 && address.length > 1 && pincode.length > 5) {
+            
+            let datafetche = await fetch('http://127.0.0.1:3000/api/signup', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ username, email, password, number, district, address, pincode, profileimage: profileimage.name })
+            })
+            datafetche = await datafetche.json();
+            console.log("Account Create SuccessFully")
+            redirect('/login')
+        }
+        else{
+            console.log("Please fill Correct Data")
+        }
+    }
+    else{
+        console.log("Email Aleready exist")
+    }
     }
     return (
         <>
+            <Header />
             <div className='w-full h-[146vh] lg:h-[100vh] bg-slate-900 flex justify-center items-center'>
                 <div className='w-[80vw] h-[80vh] flex flex-col  justify-center items-center'>
                     <form className='flex gap-3 flex-col lg:flex-row  ' action={handleSubmit}>
                         <div className='flex flex-col gap-3 '>
                             <div className='flex flex-col gap-2 bg-slate-950 rounded-sm px-5 py-2'>
                                 <lable className='text-white text-center text-lg'>Name</lable>
-                                <input className='h-9 w-80 outline-0 rounded-sm text-lg text-black' type='text' name='username' />
+                                <input required placeholder='Enter the Name' className='h-9 w-80 outline-0 rounded-sm text-lg text-black' type='text' name='username' />
                             </div>
                             <div className='flex flex-col gap-2 bg-slate-950 rounded-sm px-5 py-2'>
                                 <lable className='text-white text-center text-lg'>Email</lable>
-                                <input className='h-9 w-80 outline-0 rounded-sm text-lg text-black' type='text' name='email' />
+                                <input required placeholder='Enter The Email' className='h-9 w-80 outline-0 rounded-sm text-lg text-black' type='email' name='email' />
                             </div>
                             <div className='flex flex-col gap-2 bg-slate-950 rounded-sm px-5 py-2'>
                                 <lable className='text-white text-center text-lg'>Password</lable>
-                                <input className='h-9 w-80 outline-0 rounded-sm text-lg text-black' type='text' name='password' />
+                                <input placeholder='Password Must be 9 Digit' required className='h-9 w-80 outline-0 rounded-sm text-lg text-black' type='text' name='password' />
                             </div>
                             <div className='flex flex-col gap-2 bg-slate-950 rounded-sm px-5 py-2'>
-                                <lable className='text-white text-center text-lg'>Number</lable>
-                                <input className='h-9 w-80 outline-0 rounded-sm text-lg text-black' type='text' name='number' />
+                                <lable className='text-white text-center text-lg'>Mobile Number</lable>
+                                <input placeholder='Number Must be 10 Digit' required className='h-9 w-80 outline-0 rounded-sm text-lg text-black' type='text' name='number' />
                             </div>
                             <div className='flex flex-col gap-2 bg-slate-950 rounded-sm px-5 py-2'>
                                 <lable className='text-white text-center text-lg'>District</lable>
-                                <input className='h-9 w-80 outline-0 rounded-sm text-lg text-black' type='text' name='district' />
+                                <input placeholder='purnia..' required className='h-9 w-80 outline-0 rounded-sm text-lg text-black' type='text' name='district' />
                             </div>
                         </div>
                         <div>
                             <div className='flex flex-col gap-2 bg-slate-950 rounded-sm px-5 py-2'>
                                 <lable className='text-white text-center text-lg'>Address</lable>
-                                <input className='h-9 w-80 outline-0 rounded-sm text-lg text-black' type='text' name='address' />
+                                <input placeholder='Khoksibag...' required className='h-9 w-80 outline-0 rounded-sm text-lg text-black' type='text' name='address' />
                             </div>
                             <div className='flex flex-col gap-2 bg-slate-950 rounded-sm px-5 py-2'>
                                 <lable className='text-white text-center text-lg'>PinCode</lable>
-                                <input className='h-9 w-80 outline-0 rounded-sm text-lg text-black' type='number' name='pincode' />
+                                <input placeholder='Pin Code Must be 8 Digit' required className='h-9 w-80 outline-0 rounded-sm text-lg text-black' type='number' name='pincode' />
                             </div>
                             <div className='flex flex-col gap-2 bg-slate-950 rounded-sm px-5 py-2'>
                                 <lable className='text-white text-center text-lg'>Upload Your Profile Image</lable>

@@ -1,9 +1,7 @@
 "use client"
 import Link from 'next/link'
 import React, { useRef, useState } from 'react'
-import { BsCartFill } from 'react-icons/bs';
-import { AiFillCloseCircle,  } from 'react-icons/ai';
-import Image from 'next/image';
+import { BsCartFill } from 'react-icons/bs'
 
 
 const Header = () => {
@@ -32,13 +30,16 @@ const Header = () => {
                             <li>
                                 <Link className=' hover:text-yellow-500 ease-in duration-200' href='/'>Contact</Link>
                             </li>
+                            <li>
+                                <Link className=' hover:text-yellow-500 ease-in duration-200' href='/login'>Login</Link>
+                            </li>
                         </ul>
                         <div >
                             <p className='absolute top-[0.7rem] right-4 text-2xl cursor-pointer text-white' onClick={() => setActive(false)}>X</p>
                         </div>
                     </div> : <div><div>
 
-                        <div id='hamburger' onClick={() => setActive(!active)}><p className='cursor-pointer ml-4 text-4xl'>+</p></div>
+                        <div id='hamburger' onClick={() => setActive(!active)}><p className='cursor-pointer ml-4 text-4xl mr-9'>+</p></div>
                     </div></div>
                 }
 
@@ -63,6 +64,9 @@ const Header = () => {
                         </li>
                         <li>
                             <Link className=' hover:text-yellow-500 ease-in duration-200' href='/myorder'>My order</Link>
+                        </li>
+                        <li>
+                            <Link className='bg-green-500 px-5 py-3 rounded-md hover:bg-green-700 ease-in duration-200' href='/login'>Login</Link>
                         </li>
                     </ul>
                 </div> <div><Link href={'/cart'} className=' text-3xl relative right-0'><BsCartFill/></Link>

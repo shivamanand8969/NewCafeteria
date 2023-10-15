@@ -5,10 +5,10 @@ import Connect from "@/app/db/Connect";
 export let POST=async(req)=>{
     await Connect();
    let data=await req.json();
-   let {username,password}=data;
-   let checkusername=await User.findOne({username});
+   let {email,password}=data;
+   let checkusername=await User.findOne({email});
    if(!checkusername){
-    return NextResponse.json({"msg":"Invalid UserName!"}) 
+    return NextResponse.json({"msg":"Invalid Email Id!"}) 
    }
    let matchpassword=checkusername.password===password;
    if(!matchpassword){
