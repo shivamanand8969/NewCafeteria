@@ -25,18 +25,14 @@ const page = () => {
             <div className="flex space-x-2 md:space-x-6 md:m-4">
 
               <div className="md:w-20 w-10 h-60 md:h-96  overflow-hidden rounded-xl">
-                <Image src="/pexels-caleb-oquendo-3023476" width={100} height={500} alt=""/>
               </div>
               <div className="md:w-60 w-28 h-60 md:h-96  overflow-hidden rounded-xl">
-                <img src="https://source.unsplash.com/200x400/?girl" className="h-full w-full" alt=""/>
 
               </div>
               <div className="md:w-28  w-16 h-60 md:h-96  overflow-hidden rounded-xl">
-                <img src="https://source.unsplash.com/100x400/?boy" className="h-full w-full" alt=""/>
 
               </div>
               <div className="md:w-20 w-10 h-60 md:h-96  overflow-hidden rounded-xl">
-                <img src="https://source.unsplash.com/100x400/?women" className="h-full w-full" alt=""/>
 
               </div>
             </div>
@@ -44,9 +40,7 @@ const page = () => {
           </div>
         </div>
       </div>
-      <script src="https://cdn.tailwindcss.com"></script>
-      <script src="https://use.fontawesome.com/03f8a0ebd4.js"></script>
-    </div>
+       </div>
   )
 }
 

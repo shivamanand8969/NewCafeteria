@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 const CustomerOrderList = ({ orders }) => {
@@ -18,6 +19,7 @@ const CustomerOrderList = ({ orders }) => {
               <th className='px-2  text-xl'>Product Name</th>
               <th className='px-2  text-xl'>Product Price</th>
               <th className='px-2  text-xl'>Product Quantity</th>
+              <th className='px-2  text-xl'>Order Detail </th>
             </tr>
           </thead>
 
@@ -34,6 +36,7 @@ const CustomerOrderList = ({ orders }) => {
                 <td className='text-center border-2 border-black'>{order.prPrice}</td>
                 <td className='text-center border-2 border-black'>{order.quantity}</td>
                 <td className='text-center border-2 border-black'>{order.createdAt}</td>
+                <td className='text-center bg-green-500 border-2 hover:bg-green-800 border-black'><Link href={`/api/admin/layoutdesign/vieworder/${order._id}`}>view more</Link></td>
               </tr>
             ))}
           </tbody>
