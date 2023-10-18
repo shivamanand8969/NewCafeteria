@@ -3,46 +3,85 @@ import Image from 'next/image'
 import { redirect } from 'next/navigation';
 import React, { useState } from 'react'
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const SingleProduct = (props) => {
+  const notify = () => toast.success(`🦄 Thanyou ${myinfo.username.split(' ')[0]} jii For Order !`, {
+    position: "top-right",
+    autoClose: 10000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
+  const notifycart = () => toast.success(`🦄 ${myinfo.username.split(' ')[0]} jii Your Order has been added into Cart !`, {
+    position: "top-right",
+    autoClose: 10000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
   let today = new Date();
   let dd = String(today.getDate())
   let mm = String(today.getMonth())
   let yy = String(today.getFullYear())
   let fdate = dd + '-' + mm + '-' + yy;
-
+ 
   let data1 = props.data1;
   let myinfo = props.mydata1.data;
   let id1 = props.id;
-  let data = [123456, 234567]
+  let data = [123456, 854305]
   let [pin, setPin] = useState('');
   let [isable, setIsAble] = useState();
-  const [name, setname] = useState(data1.prname)
-  const [price, setPrice] = useState(data1.prPrice)
+  const [prname, setname] = useState(data1.prname)
+  const [prPrice, setPrice] = useState(data1.prPrice)
   const [quantity, setQuantity] = useState(1)
   let fetchuserid = props.mydata1;
+  let handleSetpin=(e)=>{
+    setPin(e.target.value)
+  
+   }
   let addCart = async () => {
-    let data = await fetch("/api/cartitems", {
-      method: 'POST',
-      headers: {
-        "Content-type": "application/json"
-      },
-      body: JSON.stringify({ userId: fetchuserid.data._id, name, desc: data1.desc, imageurl: data1.imageurl, quantity, price: price * quantity })
-    })
-    data = await data.json();
-    alert(data.msg)
-  }
+    if(pin.length>5){
+      let data = await fetch("/api/cartitems", {
+        method: 'POST',
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify({ userId:fetchuserid.data._id, prname:prname, desc:data1.desc,imageurl:data1.imageurl, quantity, prPrice:prPrice})
+      })
+      data = await data.json();
+      console.log(data)
+      alert(data.msg)
+      notifycart();
+    }
+    else{
+      alert('Please Enter the Valid PinCode')
+    }
+    }
 
   let order = async () => {
-    let data = await fetch('/api/demodata', {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ userId: id1, username: myinfo.username, number: myinfo.number, district: myinfo.district, address: myinfo.address, pincode: myinfo.pincode, prname: name, prPrice: price * quantity, quantity: quantity, desc: data1.desc, imageurl: data1.imageurl, date: fdate })
-    })
-    data = await data.json();
-    alert(data.msg);
-
+    if(pin.length>5){
+      let data = await fetch('/api/demodata', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ userId: id1, username:myinfo.username, number:myinfo.number, district:myinfo.district, address:myinfo.address, pincode:myinfo.pincode, prname:prname, prPrice:prPrice * quantity, quantity: quantity, desc: data1.desc, imageurl: data1.imageurl, date: fdate })
+      })
+      data = await data.json();
+      alert(data.msg);
+      notify();
+    }
+    else{
+      alert("Please Enter the Valid PinCode")
+    }
   }
 
   let handlecheck = async () => {
@@ -58,6 +97,17 @@ const SingleProduct = (props) => {
 
   return (
     <>
+    <ToastContainer position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light" />
+
       <section className="text-gray-600  body-font overflow-hidden bg-[#141449]">
         <div className="container py-16 flex flex-col lg:flex-row gap-2 px-2">
         <div className='flex flex-col'>
@@ -78,12 +128,12 @@ const SingleProduct = (props) => {
       <h2 className="text-2xl font-bold text-red-500 text-center">Payments</h2>
       <div className="bg-gray-800  p-4 rounded-lg">
         
-        <p className='text-yellow-500 text-3xl text-center'>{name}</p>
+        <p className='text-yellow-500 text-3xl text-center'>{prname}</p>
         <div className='border-2 text-center flex justify-center border-white w-48'></div>
         <p className='text-white text-xl '>Quantity <span className='text-green-500'>{quantity} </span></p>
-        <p className='text-white text-xl '>Price <span className='text-green-500 px-4'>{price}</span></p>
+        <p className='text-white text-xl '>Price <span className='text-green-500 px-4'>{prPrice}</span></p>
         <div className='border-2 flex justify-center text-center border-white w-48'></div>
-        <p className='text-2xl text-white px-2 '>Total <span className='text-bold text-red-500 text-3xl'> ₹ </span><span className='text-green-500'>{quantity*price}</span></p>
+        <p className='text-2xl text-white px-2 '>Total <span className='text-bold text-red-500 text-3xl'> ₹ </span><span className='text-green-500'>{quantity*prPrice}</span></p>
       </div>
     </div>
    
@@ -97,10 +147,10 @@ const SingleProduct = (props) => {
             />
             <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
               <h2 className="text-sm  lg:text-3xl text-yellow-500 ">
-                {name}
+                {prname}
               </h2>
               <h1 className="text-white text-3xl title-font font-medium mb-1">
-                <span className='text-bold text-white text-3xl mr-2 '> ₹ </span>{price}
+                <span className='text-bold text-white text-3xl mr-2 '> ₹ </span>{prPrice}
               </h1>
 
               <p className="leading-relaxed text-white">
@@ -130,7 +180,7 @@ const SingleProduct = (props) => {
               </div>
               <div className="flex">
                 <div className="title-font font-medium text-2xl text-white">
-                <span className='text-bold text-red-500 text-3xl '> ₹ </span><span className=' text-white'>{quantity*price}</span>
+                <span className='text-bold text-red-500 text-3xl '> ₹ </span><span className=' text-white'>{quantity*prPrice}</span>
                 </div>
                 <button onClick={order} className="flex ml-auto text-white px-2 bg-green-600 border-0 py-2 lg:px-6 focus:outline-none hover:bg-green-800 rounded">
                   Order
@@ -140,14 +190,14 @@ const SingleProduct = (props) => {
                 </button>
               </div>
               <div className='flex flex-col gap-2 mt-3 '>
-                <lable className='text-white font-bold font-sans text-xl '>Enter the Pin Code to verify the Service: dial 123456</lable>
-                <input type='text' value={pin} onChange={(e) => setPin(e.target.value)} className='h-9 w-36 px-2 border-2 border-black outline-none' placeholder='Pin Code..' />
+                <lable className='text-white font-bold font-sans text-xl '>Enter the Pin Code to verify the Service: for Demo dial 854305</lable>
+                <input type='text' value={pin} onChange={(e)=>handleSetpin(e)} className='h-9 w-36 px-2 border-2 border-black outline-none' placeholder='Pin Code..' />
 
-                {pin.length > 0 ? (isable ? <p className='text-green-500 text-lg'>Delivery Available At this Pin Code</p> :
+                {isable ? (isable ? <p className='text-green-500 text-lg'>Delivery Available At this Pin Code</p> :
                   <p className='text-red-500 text-lg'>Sorry! Delivery Not Available At this Pin Code</p>
                 ) : " "
                 }
-                <button className='bg-slate-600 text-white rounded px-3 py-2 hover:bg-slate-800' onClick={handlecheck}>Check</button>
+                <button className='bg-slate-600 text-white rounded px-3 py-2 hover:bg-slate-800' onClick={handlecheck}>Check PinCode</button>
               </div>
             </div>
           </div>

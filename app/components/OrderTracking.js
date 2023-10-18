@@ -1,23 +1,42 @@
 "use client"
-import React from 'react'
+import React, { useState } from 'react'
 import { GiCheckMark } from 'react-icons/gi';
 import Header from './Header';
 import Footer from './Footer';
 import { useRouter } from 'next/navigation';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const OrderTracking = ({data1}) => {
+  console.log(data1)
+  const notify = () => toast.success('🦄 Login Successfully ! please wait a minute ot redirect home page!', {
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
+ 
   let router=useRouter();
   let handleCencle=async ()=>{
+    
     let bool=confirm("Do You Want To Cencle Order")
     if(bool){
+      
    let deleteorder=await fetch(`/api/orderapi/${data1._id}`,{
      method:"DELETE",
      headers:{
        "Content-Type":"application/json"
      }
    })
+
     deleteorder=await deleteorder.json();
     alert(deleteorder.msg);
+    notify();
     router.push('/myorder')
   }
   else{
@@ -26,8 +45,20 @@ const OrderTracking = ({data1}) => {
   }
  
   return (
-<>
+<> 
+
 <Header/>
+<ToastContainer position="top-left"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light" />
+
 <div className='flex flex-col-reverse md:flex-row lg:flex-row lg:pt-16 lg:pb-5 bg-gray-900'>
      <div className='flex gap-4 w-full md:w-40 lg:w-40 items-center justify-center bg-gray-900 h-auto '>
     <div>
@@ -83,7 +114,7 @@ const OrderTracking = ({data1}) => {
         <div class="flex mb-4">
           <a class="flex-grow text-indigo-400 border-b-2 border-indigo-500 py-2 text-lg px-1">Description</a>
           {/* <a class="flex-grow border-b-2 border-gray-800 py-2 text-lg px-1">Reviews</a> */}
-          <a class="flex-grow border-b-2 border-gray-800 py-2 text-lg px-1">Details</a>
+          {/* <a class="flex-grow border-b-2 border-gray-800 py-2 text-lg px-1">Details</a> */}
         </div>
         <p class="leading-relaxed mb-4">{data1.desc}</p>
         <div class="flex border-t border-gray-800 py-2">
@@ -94,9 +125,13 @@ const OrderTracking = ({data1}) => {
           <span class="text-gray-500">Quantity</span>
           <span class="ml-auto text-white">{data1.quantity}</span>
         </div>
-        <div class="flex border-t border-b mb-6 border-gray-800 py-2">
+        <div class="flex border-t  border-gray-800 py-2">
           <span class="text-gray-500">Total</span>
           <span class="ml-auto text-white">{data1.prPrice*data1.quantity}</span>
+        </div>
+        <div class="flex border-t border-b mb-6 border-gray-800 py-2">
+          <span class="text-gray-500">Order Date</span>
+          <span class="ml-auto text-white">{data1.createdAt.split('T')[0]}</span>
         </div>
         <div class="flex">
           <span class="title-font font-medium text-2xl text-white">$ {data1.prPrice*data1.quantity}</span>

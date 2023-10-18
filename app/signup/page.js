@@ -4,7 +4,31 @@ import { writeFile } from 'fs/promises'
 import { join } from 'path'
 import Header from '../components/Header'
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const signup = () => {
+    const notifysuccess = () => toast.success('🦄 SignUp Successfully ! please wait a minute ot redirect Login page!', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    const notifyunerror = () => toast.error('🦄 Login Unsuccessfull !', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+     
     let handleSubmit = async (data) => {
         "use server"
         let username = data.get('username')
@@ -20,7 +44,7 @@ const signup = () => {
         let path = join('./public', profileimage.name);
         await writeFile(path, buffer);
     
-        if(true){
+        
         if (username.length > 1 && email.length > 1 && password.length > 8 && number.length >= 10 && district.length > 1 && address.length > 1 && pincode.length > 5) {
             
             let datafetche = await fetch('http://127.0.0.1:3000/api/signup', {
@@ -31,19 +55,35 @@ const signup = () => {
                 body: JSON.stringify({ username, email, password, number, district, address, pincode, profileimage: profileimage.name })
             })
             datafetche = await datafetche.json();
-            console.log("Account Create SuccessFully")
-            redirect('/login')
+            if(datafetche.msg==='Sign Up successfully'){
+                
+                console.log(datafetche.msg)
+                redirect('/login')
+            }
+            else if(datafetche.msg==='Email Already Exist'){ 
+                console.log(datafetche.msg)
+                redirect('/signup')
+            }
         }
         else{
             console.log("Please fill Correct Data")
         }
+    
+   
     }
-    else{
-        console.log("Email Aleready exist")
-    }
-    }
+    
     return (
         <>
+        <ToastContainer position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light" />
             <Header />
             <div className='w-full h-[146vh] lg:h-[100vh] bg-slate-900 flex justify-center items-center'>
                 <div className='w-[80vw] h-[80vh] flex flex-col  justify-center items-center'>
@@ -55,10 +95,10 @@ const signup = () => {
                             </div>
                             <div className='flex flex-col gap-2 bg-slate-950 rounded-sm px-5 py-2'>
                                 <lable className='text-white text-center text-lg'>Email</lable>
-                                <input required placeholder='Enter The Email' className='h-9 w-80 outline-0 rounded-sm text-lg text-black' type='email' name='email' />
+                                <input required placeholder='Enter the Email' className='h-9 w-80 outline-0 rounded-sm text-lg text-black' type='email' name='email' />
                             </div>
                             <div className='flex flex-col gap-2 bg-slate-950 rounded-sm px-5 py-2'>
-                                <lable className='text-white text-center text-lg'>Password</lable>
+                                <lable className='text-white text-center text-lg'>Create Password</lable>
                                 <input placeholder='Password Must be 9 Digit' required className='h-9 w-80 outline-0 rounded-sm text-lg text-black' type='text' name='password' />
                             </div>
                             <div className='flex flex-col gap-2 bg-slate-950 rounded-sm px-5 py-2'>

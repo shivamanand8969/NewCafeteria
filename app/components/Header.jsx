@@ -3,9 +3,16 @@ import Link from 'next/link'
 import React, { useRef, useState } from 'react'
 import { BsCartFill } from 'react-icons/bs'
 
+let Header = () => {
 
-const Header = () => {
+    let logout = async () => {
+        let logoutdata = await fetch("/api/logout", { cache: "no-store" });
+        logoutdata = await logoutdata.json();
+        alert(logoutdata.msg)
+    }
+
     let [active, setActive] = useState(false)
+
     return (
         <header className='bg-[#141449] fixed top-0 left-0 w-full z-50 text-white font-sans shadow-2xl'>
             <nav className='sm:hidden container relative h-14 flex justify-between items-center'>
@@ -33,6 +40,7 @@ const Header = () => {
                             <li>
                                 <Link className=' hover:text-yellow-500 ease-in duration-200' href='/login'>Login</Link>
                             </li>
+                            <butto className='text-red-500 hover:underline ease-linear duration-200 text-xl'>Logout</butto>
                         </ul>
                         <div >
                             <p className='absolute top-[0.7rem] right-4 text-2xl cursor-pointer text-white' onClick={() => setActive(false)}>X</p>
@@ -52,24 +60,28 @@ const Header = () => {
 
                 <div className=''>
                     <ul className='flex  text-center gap-5 text-xl py-10'>
-                       
+
                         <li>
                             <Link className=' hover:text-yellow-500 ease-in duration-200' href='/'>About Us</Link>
                         </li>
+
                         <li>
-                            <Link className=' hover:text-yellow-500 ease-in duration-200' href='/'>Menu</Link>
-                        </li>
-                        <li>
-                            <Link className=' hover:text-yellow-500 ease-in duration-200' href='/'>Review</Link>
+                            <Link className=' hover:text-yellow-500 ease-in duration-200' href='#ch4'>Order</Link>
                         </li>
                         <li>
                             <Link className=' hover:text-yellow-500 ease-in duration-200' href='/myorder'>My order</Link>
                         </li>
+                        <button onClick={logout} className=' rounded-md hover:underline text-red-500 ease-in duration-200'>Logout</button>
+
                         <li>
                             <Link className='bg-green-500 px-5 py-3 rounded-md hover:bg-green-700 ease-in duration-200' href='/login'>Login</Link>
                         </li>
+
+                        <li>
+                            <Link className='bg-green-500 px-5 py-3 rounded-md hover:bg-green-700 ease-in duration-200' href='/signup'>Sign Up</Link>
+                        </li>
                     </ul>
-                </div> <div><Link href={'/cart'} className=' text-3xl relative right-0'><BsCartFill/></Link>
+                </div> <div><Link href={'/cart'} className=' text-3xl relative right-0'><BsCartFill /></Link>
                 </div>
 
             </nav>

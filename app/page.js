@@ -4,16 +4,15 @@ import Mainsection from './components/Mainsection'
 import Cart from './components/Cart'
 import Product from './components/Product'
 import Footer from './components/Footer'
-
-const page = async () => {
- 
+let page = async () => {
   return (
-    <div className='bg-[#141449] p-4 md:p-4 lg:pl-14'>
-     <Header/>
-      <div className='pt-16 pb-4 md:pt-20'><Mainsection/></div>
-      <div className=' pb-10 '><Cart/></div>
-      <div><Product/></div>
-      <div className='mt-4'><Footer/></div>
+    <div className='bg-[#141449]  md:p-4 lg:pl-1'>
+      <Header />
+      <div className=' pb-4 mt-10 lg:mt-0 pt-3 lg:pt-0'><Mainsection /></div>
+      <div className=' pb-10 '><Cart /></div>
+      <div id='ch4'></div>
+      <div><Product /></div>
+      <div className='mt-4'><Footer /></div>
     </div>
   )
 }

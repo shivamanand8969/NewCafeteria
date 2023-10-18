@@ -3,11 +3,11 @@ import User from "./User";
 
 let Cartschema=new mongoose.Schema({
     userId:{type:mongoose.Schema.Types.ObjectId,ref:"User"},
-    name:{type:String},
+    prname:{type:String},
     desc:{type:String},
     imageurl:{type:String},
     quantity:{type:Number},
-    price:{type:Number},
+    prPrice:{type:Number},
 
 },{timestamps:true})
 export default mongoose.models.Cartitem || mongoose.model("Cartitem",Cartschema)

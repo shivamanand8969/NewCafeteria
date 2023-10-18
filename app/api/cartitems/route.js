@@ -22,7 +22,7 @@ export let POST=async (req)=>{
      let newdata=new Cartitem(data);
      try{
         newdata.save();
-        return NextResponse.json({newdata,"msg":"data inserted successfully"})
+        return NextResponse.json({newdata,"msg":"Order Added into Cart successfully"})
      }
      catch(e){
         throw new Error(e);
