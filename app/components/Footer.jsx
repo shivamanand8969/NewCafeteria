@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
+import { FaPhoneVolume } from 'react-icons/fa';
+import { MdEmail } from 'react-icons/md';
 
 const Footer = () => {
   return (
@@ -25,11 +27,11 @@ const Footer = () => {
                     <li className='space-y-8 text-white'>
                         <div className='space-y-2'>
                             <h3 className='text-2xl uppercase font-sans '>Phone</h3>
-                            <p className='flex items-center gap-2 text-xs'>Phoneicon +1 8969171781</p>
+                            <p className='flex items-center gap-2 text-xs'><span className='text-2xl'><FaPhoneVolume/></span> +1 8969171781</p>
                         </div>
                           <div className='space-y-2'>
                             <h3 className='text-2xl uppercase font-sans '>email</h3>
-                            <p className='flex items-center gap-2 text-xs'>emailicon  krypt@gmail.com</p>
+                            <p className='flex items-center gap-2 text-xs'><span className='text-2xl'><MdEmail/> </span> shivamanand1234@gmail.com</p>
                         </div>
                     </li>
                      <li className='space-y-8 text-white'>

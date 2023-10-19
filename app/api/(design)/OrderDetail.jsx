@@ -110,11 +110,11 @@ const OrderDetail = ({order,id1}) => {
         <div className='flex gap-2'>
           
         <h2 className="text-white text-lg title-font font-medium mb-1">Order Date</h2>
-          <p className="leading-relaxed text-lg text-green-500 ">{dateandtime.split('T')[0]}</p> 
+          <p className="leading-relaxed text-lg text-green-500 ">{dateandtime?.split('T')[0]}</p> 
         </div>
         <div className='flex gap-2'>
           <h2 className="text-white text-lg title-font font-medium mb-1">Order Time</h2>
-            <p className="leading-relaxed text-lg text-green-500 ">{dateandtime.split('T')[1].split('.')[0]}</p>
+            <p className="leading-relaxed text-lg text-green-500 ">{dateandtime?.split('T')[1].split('.')[0]}</p>
           </div>
         </div>
       </div>

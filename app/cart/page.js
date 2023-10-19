@@ -5,12 +5,29 @@ import {cookies} from 'next/headers';
 import  JWT from 'jsonwebtoken';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { redirect } from 'next/navigation';
 const cart = async () => {
     let data1=await fetch("http://127.0.0.1:3000/api/cartitems",{cache:"no-store"});
     data1=await data1.json();
     const cookie= cookies().get('usercookies')?.value ?? '';
     let decodedToken=JWT.verify(cookie,'tokenname');
     let id=decodedToken.id
+
+    let handledelete=async(fordata)=>{
+      
+      "use server"
+      let id=fordata.get('id');
+
+        let delet=await fetch(`http://127.0.0.1:3000/api/cartitems/${id}`,{
+          method:"DELETE",
+          headers:{
+            "Content-Type":"application/json"
+          }
+        })
+        delet=await delet.json();
+        console.log(delet.msg);
+        redirect('/cart')
+    }
    
   return (
   <>
@@ -33,7 +50,10 @@ const cart = async () => {
         </div>
         <div>
             <div className=' flex justify-between  '>
-                <button className='px-5 py-2 text-lg  rounded-md bg-red-500 text-white hover:bg-red-700 '>Delete</button>
+              <form action={handledelete}>
+                     <input type='hidden' name='id' value={value._id}/>
+                <button type='submit' className='px-5 py-2 text-lg  rounded-md bg-red-500 text-white hover:bg-red-700 '>Delete</button>
+              </form>
                 <Link className='px-5 py-2 text-lg  rounded-md bg-green-500 text-white hover:bg-green-700 ' href={`/cart/${value._id}`}>Order</Link>
             </div>
         </div>

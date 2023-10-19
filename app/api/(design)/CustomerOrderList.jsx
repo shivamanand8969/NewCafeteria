@@ -8,7 +8,7 @@ const CustomerOrderList = ({ orders }) => {
       <div className="overflow-x-auto">
         <table className="min-w-full w-full divide-gray-200">
         
-          <thead className='bg-red-400'>
+          <thead className='bg-slate-950'>
             <tr>
               <th className='px-2  text-xl'>Customer's Name</th>
               <th className='px-2  text-xl'>Email</th>

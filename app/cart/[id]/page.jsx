@@ -18,7 +18,9 @@ let page=async ({params})=>{
      <div>
       <Header/>
       <SingleProduct data1={data.data} mydata1={mydata} id={verifytoken.id}/>
-       <Footer/>
+      <div className="bg-[#141449] pt-2">
+      <Footer/>
+      </div>
     </div>
         </>
      )

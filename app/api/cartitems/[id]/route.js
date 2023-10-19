@@ -13,3 +13,13 @@ export let GET=async (req,{params})=>{
         return NextResponse.json({"msg":e.message})
     }
 }
+export let DELETE=async (req,{params})=>{
+    let {id}=params;
+    try{
+       let deletedata=await Cartitem.findByIdAndDelete(id);
+       return NextResponse.json({"msg":"Item Deleted Successfully"})
+    }
+    catch(e){
+        return NextResponse.json({"msg":e.message})
+    }
+}

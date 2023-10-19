@@ -38,7 +38,7 @@ const SingleProduct = (props) => {
   let id1 = props.id;
   let data = [123456, 854305]
   let [pin, setPin] = useState('');
-  let [isable, setIsAble] = useState();
+  let [isable, setIsAble] = useState(false);
   const [prname, setname] = useState(data1.prname)
   const [prPrice, setPrice] = useState(data1.prPrice)
   const [quantity, setQuantity] = useState(1)
@@ -48,39 +48,43 @@ const SingleProduct = (props) => {
   
    }
   let addCart = async () => {
-    if(pin.length>5){
-      let data = await fetch("/api/cartitems", {
-        method: 'POST',
-        headers: {
-          "Content-type": "application/json"
-        },
-        body: JSON.stringify({ userId:fetchuserid.data._id, prname:prname, desc:data1.desc,imageurl:data1.imageurl, quantity, prPrice:prPrice})
-      })
-      data = await data.json();
-      console.log(data)
-      alert(data.msg)
-      notifycart();
+    if(isable){
+      if(pin.length>5){
+        let data = await fetch("/api/cartitems", {
+          method: 'POST',
+          headers: {
+            "Content-type": "application/json"
+          },
+          body: JSON.stringify({ userId:fetchuserid.data._id, prname:prname, desc:data1.desc,imageurl:data1.imageurl, quantity, prPrice:prPrice})
+        })
+        data = await data.json();
+        console.log(data)
+        alert(data.msg)
+        notifycart();
+      }else{
+        alert("Enter valid pin code")
+      }
     }
     else{
-      alert('Please Enter the Valid PinCode')
+      alert('Please Enter the Valid PinCode and press check button')
     }
     }
 
   let order = async () => {
-    if(pin.length>5){
+    if(isable){
       let data = await fetch('/api/demodata', {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({ userId: id1, username:myinfo.username, number:myinfo.number, district:myinfo.district, address:myinfo.address, pincode:myinfo.pincode, prname:prname, prPrice:prPrice * quantity, quantity: quantity, desc: data1.desc, imageurl: data1.imageurl, date: fdate })
+        body: JSON.stringify({ userId: id1, username:myinfo.username,email:myinfo.email,number:myinfo.number, district:myinfo.district, address:myinfo.address, pincode:myinfo.pincode, prname:prname, prPrice:prPrice * quantity, quantity: quantity, desc: data1.desc, imageurl: data1.imageurl, date: fdate })
       })
       data = await data.json();
       alert(data.msg);
       notify();
     }
     else{
-      alert("Please Enter the Valid PinCode")
+      alert("Please Enter the Valid PinCode and press check button")
     }
   }
 
@@ -119,7 +123,7 @@ const SingleProduct = (props) => {
             <div className='text-xl'><span className='text-yellow-500'>Number</span> {myinfo.number}</div>
             <div className='text-xl'><span className='text-yellow-500'>District</span> {myinfo.district}</div>
             <div className='text-xl'><span className='text-yellow-500'>Address</span> {myinfo.address}</div>
-            <div className='text-xl'><span className='text-yellow-500'>Address</span> {myinfo.pincode}</div>
+            <div className='text-xl'><span className='text-yellow-500'>Pin Code</span> {myinfo.pincode}</div>
 
           </div>
         </div>
@@ -159,9 +163,9 @@ const SingleProduct = (props) => {
               <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
 
                 <div className="flex ml-6 items-center">
-                  <span className="mr-3 text-black font-bold font-sans text-2xl">Quantity</span>
+                  <span className="mr-3 text-yellow-500 font-bold font-sans text-2xl">Quantity</span>
                   <div className="relative">
-                    <input type='number' value={quantity} onChange={(e) => setQuantity((e.target.value>=1)?e.target.value:1)} className='h-9 w-36 border-2 px-2 border-black' placeholder='Quantity..' />
+                    <input type='number' value={quantity} onChange={(e) => setQuantity(e.target.value)} className='h-9 w-36 border-2 px-2 border-black' placeholder='Quantity..' />
                     <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
                       <svg
                         fill="none"
@@ -190,7 +194,7 @@ const SingleProduct = (props) => {
                 </button>
               </div>
               <div className='flex flex-col gap-2 mt-3 '>
-                <lable className='text-white font-bold font-sans text-xl '>Enter the Pin Code to verify the Service: for Demo dial 854305</lable>
+                <lable className='text-white font-bold font-sans text-xl '>Enter the Pin Code to verify the Service: for Demo dial 854305 or 123456</lable>
                 <input type='text' value={pin} onChange={(e)=>handleSetpin(e)} className='h-9 w-36 px-2 border-2 border-black outline-none' placeholder='Pin Code..' />
 
                 {isable ? (isable ? <p className='text-green-500 text-lg'>Delivery Available At this Pin Code</p> :

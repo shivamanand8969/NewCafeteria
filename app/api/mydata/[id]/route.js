@@ -15,3 +15,14 @@ export let GET=async (req,{params})=>{
         return NextResponse.json({"msg":e.message});
     }
 }
+export let PUT=async (req,{params})=>{
+         let {id}=params;
+        let data=await req.json();
+         try{
+             let updatedata=await User.findByIdAndUpdate(id,data)
+            return NextResponse.json({"msg":"Profile Update SuccessFully"})
+         }
+         catch(e){
+            return NextResponse.json({"msg":e.message})
+         }
+}
