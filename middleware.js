@@ -12,5 +12,5 @@ export let middleware=(request)=>{
 }
 
 export const config={
-    matcher:['/','/login','/signup','/aboutus/:path*','/profile/:path*','/myorder/:path*','/cart/:path*','/singleproduct/:path*']
+    matcher:['/','/login','/signup','/aboutus/:path*','/profile/:path*','/myorder/:path*','/cart/:path*','/singleproduct/:path*','/order']
  }

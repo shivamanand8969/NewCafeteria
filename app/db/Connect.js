@@ -1,8 +1,8 @@
 import mongoose from "mongoose"
 
-const Connect =async () => {
+let Connect =async () => {
       try{
-        mongoose.connect("mongodb://localhost:27017/NewCafeteria")
+      await mongoose.connect(process.env.connectionStr)
       }
       catch(e){
         throw new Error(e);

@@ -45,7 +45,7 @@ const signup = () => {
         await writeFile(path, buffer);
     
                                                                                                                                                                                                                                 
-        if (username.length > 1 && email.length > 1 && password.length > 8 && number.length >= 10 && district.length > 1 && address.length > 1 && pincode.length > 5) {
+        if (username.length > 1 && email.length > 1 && password.length > 6 && number.length >= 10 && district.length > 1 && address.length > 1 && pincode.length > 5) {
             
             let datafetche = await fetch('http://127.0.0.1:3000/api/signup', {
                 method: "POST",

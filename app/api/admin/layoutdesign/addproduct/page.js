@@ -23,6 +23,7 @@ const additem = () => {
       body:JSON.stringify({prname,prPrice,desc,discount,imageurl})
     })
     data=await data.json();
+   console.log(data.msg);
     redirect('/api/admin/layoutdesign')
   }
   return (

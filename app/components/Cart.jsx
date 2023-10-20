@@ -14,7 +14,7 @@ const Cart = () => {
                         <h4 className='text-xl ml-5 text-white font-sans font-bold uppercase lg:text-2xl'>Food</h4>
                         <p className='text-sm ml-5 text-white'>Lorem ipsum dolor sit.</p>
                     </div>
-                    <Link className='text-black cursor-pointer text-lg ml-5 hover:underline ' href={'/'}>Buy Online</Link>
+                    <Link className='text-black cursor-pointer text-lg ml-5 hover:underline ' href={'/order'}>Buy Online</Link>
                 </div>
             </div>
 
@@ -26,7 +26,7 @@ const Cart = () => {
                         <h4 className='text-xl ml-5 text-white font-sans font-bold uppercase lg:text-4xl'>SNACK</h4>
                         <p className='text-sm ml-5 text-white'>Lorem ipsum dolor sit.</p>
                     </div>
-                    <Link className='text-black cursor-pointer text-lg ml-5 hover:underline ' href={'/'}>Buy Online</Link>
+                    <Link className='text-black cursor-pointer text-lg ml-5 hover:underline ' href={'/order'}>Buy Online</Link>
                 </div>
             </div>
 
@@ -38,7 +38,7 @@ const Cart = () => {
                         <h4 className='text-xl ml-5 text-white font-sans font-bold uppercase lg:text-4xl'>Burger</h4>
                         <p className='text-sm ml-5 text-white'>Lorem ipsum dolor sit.</p>
                     </div>
-                    <Link className='text-black cursor-pointer text-lg ml-5 hover:underline ' href={'/'}>Buy Online</Link>
+                    <Link className='text-black cursor-pointer text-lg ml-5 hover:underline ' href={'/order'}>Buy Online</Link>
                 </div>
             </div>
        </div>

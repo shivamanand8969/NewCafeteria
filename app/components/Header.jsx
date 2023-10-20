@@ -66,7 +66,7 @@ let Header = () => {
                         </li>
 
                         <li>
-                            <Link className=' hover:text-yellow-500 ease-in duration-200' href='/#ch4'>Order</Link>
+                            <Link className=' hover:text-yellow-500 ease-in duration-200' href='/order'>Order</Link>
                         </li>
                         <li>
                             <Link className=' hover:text-yellow-500 ease-in duration-200' href='/myorder'>My order</Link>

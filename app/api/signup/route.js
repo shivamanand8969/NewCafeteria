@@ -1,7 +1,7 @@
 import Connect from "@/app/db/Connect";
 import User from "@/app/models/User";
 import { NextResponse } from "next/server"
-
+import bcrypt from 'bcryptjs'
 export let GET=async ()=>{
    await Connect();
    let data=await User.find({});
@@ -15,7 +15,10 @@ export let POST=async (req)=>{
      if(checkmail){
         return NextResponse.json({"msg":"Email Already Exist"})
      }
-     let newUser=new User(data);
+     let hashedpassword=await bcrypt.hash(password,8);
+
+
+     let newUser=new User({username, email, password:hashedpassword, number, district, address, pincode, profileimage});
 
      try{
         let newdata=await newUser.save();

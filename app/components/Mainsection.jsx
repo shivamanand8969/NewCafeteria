@@ -45,7 +45,7 @@ const Mainsection = () => {
                     </div>
                 </div>
                 <div  className='flex justify-center items-center'>
-                    <button className=' inline-block text-sm py-3 px-8 capitalize text-center cursor-pointer rounded-md font-sans font-bold ease-linear duration-200 text-black  bg-yellow-400 hover:opacity-75 lg:text-6xl'><Link href={'/'}>Learn More</Link></button>
+                    <button className=' inline-block text-sm py-3 px-8 capitalize text-center cursor-pointer rounded-md font-sans font-bold ease-linear duration-200 text-black  bg-yellow-400 hover:opacity-75 lg:text-6xl'><Link href={'/order'}>Order Now</Link></button>
                 </div>
             </section>
              

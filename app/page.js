@@ -10,9 +10,7 @@ let page = async () => {
       <Header />
       <div className=' pb-4 mt-10 lg:mt-0 pt-3 lg:pt-0'><Mainsection /></div>
       <div className=' pb-10 '><Cart /></div>
-      <div id='ch4'></div>
-      <div><Product /></div>
-      <div className='mt-4'><Footer /></div>
+      <div className='pt-4'><Footer /></div>
     </div>
   )
 }
