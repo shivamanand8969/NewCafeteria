@@ -6,12 +6,12 @@ import Header from '@/app/components/Header';
 import Footer from '@/app/components/Footer';
 const singleproduct = async({params}) => {
   let {id}=params;
-  let data= await fetch(`http://127.0.0.1:3000/api/product/${id}`,{cache:"no-store"})
+  let data= await fetch(`${process.env.HOST}/api/product/${id}`,{cache:"no-store"})
   data=await data.json();
  
 let cookie=cookies().get('usercookies')?.value ?? '';
 let verifycookie=JWT.verify(cookie,'tokenname');
-  let mydata=await fetch(`http://127.0.0.1:3000/api/mydata/${verifycookie.id}`,{cache:"no-store"})
+  let mydata=await fetch(`${process.env.HOST}/api/mydata/${verifycookie.id}`,{cache:"no-store"})
   mydata=await mydata.json();
 
   return (

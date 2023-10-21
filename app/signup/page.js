@@ -47,7 +47,7 @@ const signup = () => {
                                                                                                                                                                                                                                 
         if (username.length > 1 && email.length > 1 && password.length > 6 && number.length >= 10 && district.length > 1 && address.length > 1 && pincode.length > 5) {
             
-            let datafetche = await fetch('http://127.0.0.1:3000/api/signup', {
+            let datafetche = await fetch(`${process.env.HOST}/api/signup`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

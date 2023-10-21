@@ -7,7 +7,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { redirect } from 'next/navigation';
 const cart = async () => {
-    let data1=await fetch("http://127.0.0.1:3000/api/cartitems",{cache:"no-store"});
+    let data1=await fetch(`${process.env.HOST}/api/cartitems`,{cache:"no-store"});
     data1=await data1.json();
     const cookie= cookies().get('usercookies')?.value ?? '';
     let decodedToken=JWT.verify(cookie,'tokenname');
@@ -18,7 +18,7 @@ const cart = async () => {
       "use server"
       let id=fordata.get('id');
 
-        let delet=await fetch(`http://127.0.0.1:3000/api/cartitems/${id}`,{
+        let delet=await fetch(`${process.env.HOST}/api/cartitems/${id}`,{
           method:"DELETE",
           headers:{
             "Content-Type":"application/json"
