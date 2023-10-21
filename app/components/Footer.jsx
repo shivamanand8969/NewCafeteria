@@ -18,10 +18,10 @@ const Footer = () => {
                     <li>
                         <div className='flex flex-col gap-3 text-white '>
                             <h3 className='text-lg uppercase font-sans cursor-pointer'>support</h3>
-                            <Link href={''} className='text-sm cursor-pointer hover:text-yellow-400 '>FAQs</Link>
-                            <Link href={''} className='text-sm cursor-pointer hover:text-yellow-400 '>Privacy Policy</Link>
-                            <Link href={''} className='text-sm cursor-pointer  hover:text-yellow-400 '>Term & Condition</Link>
-                            <Link href={''} className='text-sm cursor-pointer hover:text-yellow-400 '>Condition</Link>
+                            <Link href={'/'} className='text-sm cursor-pointer hover:text-yellow-400 '>FAQs</Link>
+                            <Link href={'/'} className='text-sm cursor-pointer hover:text-yellow-400 '>Privacy Policy</Link>
+                            <Link href={'/'} className='text-sm cursor-pointer  hover:text-yellow-400 '>Term & Condition</Link>
+                            <Link href={'/'} className='text-sm cursor-pointer hover:text-yellow-400 '>Condition</Link>
                         </div>
                     </li>
                     <li className='space-y-8 text-white'>

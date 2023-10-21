@@ -8,8 +8,8 @@ export let GET=async()=>{
         let data=await Demoorder.find({})
         return NextResponse.json({data});
     }catch(e){
-        throw new Error(e.meesage);
-    }
+        return NextResponse.json({"msg":e.message}) 
+       }
 }
 export let POST=async (res)=>{
     await Connect();
@@ -17,7 +17,7 @@ export let POST=async (res)=>{
     let newdata=new Demoorder(data);
     try {
         await newdata.save();
-        return NextResponse.json({"msg":"Order Successfully",newdata})
+        return NextResponse.json({"msg":"Order Successfully"})
     } catch (error) {
         return NextResponse.json({"msg":error.message})
     }

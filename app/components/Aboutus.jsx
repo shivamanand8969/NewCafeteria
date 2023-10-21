@@ -3,9 +3,10 @@ import Link from 'next/link';
 import {  useRouter } from 'next/navigation';
 import React, { useState } from 'react'
 import { BiLogInCircle } from 'react-icons/bi';
+import Header from './Header';
+import Footer from './Footer';
 
-
-let About = ({data,id}) => {
+let Aboutus = ({data,id}) => {
        let router=useRouter();
          let [comment,setCommet]=useState();
          let handleSubmit=async ()=>{
@@ -23,6 +24,9 @@ let About = ({data,id}) => {
 
     return (
         <>
+        <div className='pt-14'>
+           <Header/>
+        </div>
     <div>
         <div>
         <div className='w-full bg-[#141449] pt-14'>
@@ -82,8 +86,8 @@ let About = ({data,id}) => {
       <div className='w-full h-[2px]  mt-3 bg-slate-500 '></div>
       
       {
-        data.map((value)=>(
-            <div className="lg:w-1/3 lg:mb-0 mb-6 p-4">
+        data.map((value, key)=>(
+            <div key={key} className="lg:w-1/3 lg:mb-0 mb-6 p-4">
             <div className="h-full text-center">
               <img
                 alt="upload image"
@@ -110,9 +114,12 @@ let About = ({data,id}) => {
         </footer>
     </div>
     </div>
-    
+    <div className='bg-[#141449] pt-10'>
+
+    <Footer/>
+    </div>
     </>
   )
 }
 
-export default About
+export default Aboutus

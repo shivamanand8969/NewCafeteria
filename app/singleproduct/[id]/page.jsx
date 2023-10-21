@@ -19,7 +19,6 @@ let verifycookie=JWT.verify(cookie,'tokenname');
       <Header/>
       <SingleProduct data1={data.data} mydata1={mydata} id={verifycookie.id}/>
       <div className='bg-[#141449] pt-4'>
-
        <Footer/>
       </div>
     </div>

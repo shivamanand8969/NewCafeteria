@@ -9,7 +9,7 @@ export let GET=async (req,{params})=>{
         let data=await Demoorder.findById(id);
         return NextResponse.json({data})
     }catch(e){
-        throw new Error(e.message)
-    }
+        return NextResponse.json({"msg":e.message})  
+  }
     
 }

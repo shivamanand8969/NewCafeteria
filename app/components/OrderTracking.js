@@ -9,7 +9,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const OrderTracking = ({data1}) => {
-  console.log(data1)
+  
   const notify = () => toast.success('🦄 Login Successfully ! please wait a minute ot redirect home page!', {
     position: "top-center",
     autoClose: 5000,
@@ -105,41 +105,41 @@ const OrderTracking = ({data1}) => {
         </ul>
     </div>
 </div>
-        <section class="text-gray-400 bg-gray-900 body-font overflow-hidden">
-  <div class="container px-5 py-8  pt-2 mx-auto">
-    <div class="lg:w-4/5 mx-auto flex flex-wrap">
-      <div class="lg:w-1/2 w-full lg:pr-10 lg:py-6  mb-6 lg:mb-0">
-        <h2 class=" title-font text-white text-3xl tracking-widest">{data1.prname}</h2>
-        <h1 class="text-white text-3xl title-font font-medium mb-4"></h1>
-        <div class="flex mb-4">
-          <a class="flex-grow text-indigo-400 border-b-2 border-indigo-500 py-2 text-lg px-1">Description</a>
-          {/* <a class="flex-grow border-b-2 border-gray-800 py-2 text-lg px-1">Reviews</a> */}
-          {/* <a class="flex-grow border-b-2 border-gray-800 py-2 text-lg px-1">Details</a> */}
+        <section className="text-gray-400 bg-gray-900 body-font overflow-hidden">
+  <div className="container px-5 py-8  pt-2 mx-auto">
+    <div className="lg:w-4/5 mx-auto flex flex-wrap">
+      <div className="lg:w-1/2 w-full lg:pr-10 lg:py-6  mb-6 lg:mb-0">
+        <h2 className=" title-font text-white text-3xl tracking-widest">{data1.prname}</h2>
+        <h1 className="text-white text-3xl title-font font-medium mb-4"></h1>
+        <div className="flex mb-4">
+          <a className="flex-grow text-indigo-400 border-b-2 border-indigo-500 py-2 text-lg px-1">Description</a>
+          {/* <a className="flex-grow border-b-2 border-gray-800 py-2 text-lg px-1">Reviews</a> */}
+          {/* <a className="flex-grow border-b-2 border-gray-800 py-2 text-lg px-1">Details</a> */}
         </div>
-        <p class="leading-relaxed mb-4">{data1.desc}</p>
-        <div class="flex border-t border-gray-800 py-2">
-          <span class="text-gray-500">Price</span>
-          <span class="ml-auto text-white">{data1.prname}</span>
+        <p className="leading-relaxed mb-4">{data1.desc}</p>
+        <div className="flex border-t border-gray-800 py-2">
+          <span className="text-gray-500">Price</span>
+          <span className="ml-auto text-white">{data1.prname}</span>
         </div>
-        <div class="flex border-t border-gray-800 py-2">
-          <span class="text-gray-500">Quantity</span>
-          <span class="ml-auto text-white">{data1.quantity}</span>
+        <div className="flex border-t border-gray-800 py-2">
+          <span className="text-gray-500">Quantity</span>
+          <span className="ml-auto text-white">{data1.quantity}</span>
         </div>
-        <div class="flex border-t  border-gray-800 py-2">
-          <span class="text-gray-500">Total</span>
-          <span class="ml-auto text-white">{data1.prPrice*data1.quantity}</span>
+        <div className="flex border-t  border-gray-800 py-2">
+          <span className="text-gray-500">Total</span>
+          <span className="ml-auto text-white">{data1.prPrice*data1.quantity}</span>
         </div>
-        <div class="flex border-t border-b mb-6 border-gray-800 py-2">
-          <span class="text-gray-500">Order Date</span>
-          <span class="ml-auto text-white">{data1.createdAt.split('T')[0]}</span>
+        <div className="flex border-t border-b mb-6 border-gray-800 py-2">
+          <span className="text-gray-500">Order Date</span>
+          <span className="ml-auto text-white">{data1.createdAt.split('T')[0]}</span>
         </div>
-        <div class="flex">
-          <span class="title-font font-medium text-2xl text-white">$ {data1.prPrice*data1.quantity}</span>
-          <button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Pay Bill</button>
-          <button onClick={handleCencle} class="flex ml-auto text-white bg-red-500  border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Cencle Order</button>
+        <div className="flex">
+          <span className="title-font font-medium text-2xl text-white">$ {data1.prPrice*data1.quantity}</span>
+          <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Pay Bill</button>
+          <button onClick={handleCencle} className="flex ml-auto text-white bg-red-500  border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Cencle Order</button>
           </div>
       </div>
-      <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src={`/${data1.imageurl}`}/>
+      <img alt="ecommerce" className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src={`/${data1.imageurl}`}/>
     </div>
     
   </div>

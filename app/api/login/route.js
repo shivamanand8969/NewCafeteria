@@ -2,6 +2,7 @@ import User from "@/app/models/User";
 import { NextResponse } from "next/server";
 import JWT from "jsonwebtoken";
 import Connect from "@/app/db/Connect";
+import bcrypt from 'bcryptjs'
 export let POST=async(req)=>{
     await Connect();
    let data=await req.json();
@@ -10,7 +11,8 @@ export let POST=async(req)=>{
    if(!checkusername){
     return NextResponse.json({"msg":"Invalid Email Id!"}) 
    }
-   let matchpassword=checkusername.password===password;
+
+   let matchpassword=await bcrypt.compare(password, checkusername.password)
    if(!matchpassword){
     return NextResponse.json({"msg":"Invalid Password"});
    }
@@ -18,7 +20,7 @@ export let POST=async(req)=>{
     id:checkusername._id,
     username:checkusername.username
    }
-   let token=JWT.sign(tokendata,"tokenname");
+   let token=JWT.sign(tokendata,"tokenname",{expiresIn:'365d'});
    let response=NextResponse.json({"msg":"Login Successfully"});
    response.cookies.set("usercookies",token,{
     httpOnly:true

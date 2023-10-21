@@ -1,8 +1,7 @@
 import React from 'react'
 import Header from './components/Header'
 import Mainsection from './components/Mainsection'
-import Cart from './components/Cart'
-import Product from './components/Product'
+import Cart from './components/Cart';
 import Footer from './components/Footer'
 let page = async () => {
   return (
