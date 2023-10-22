@@ -22,7 +22,7 @@ let Header = () => {
                 </div>
                 {active ?
                     <div className='absolute top-0 left-0 w-full py-14 bg-blue-800 border-b border-yellow-400'>
-                        <ul className='flex flex-col text-center gap-5 text-xl'>
+                        <div className='flex flex-col text-center gap-5 text-xl'>
                             <li>
                                 <Link className='text-yellow-500 hover:text-yellow-700 hover:underline ease-in duration-200 text-lg' href='/profile'>Profile</Link>
                             </li>
@@ -40,7 +40,7 @@ let Header = () => {
                                 <Link className='text-yellow-500 text-lg hover:underline hover:text-yellow-500 ease-in duration-200' href='/login'>Login</Link>
                             </li>
                             <button onClick={logout} className='text-red-500 hover:text-red-700  hover:underline ease-linear duration-200 text-xl'>Logout</button>
-                        </ul>
+                        </div>
                         <div >
                             <p className='absolute top-[0.7rem] right-4 text-2xl cursor-pointer text-white' onClick={() => setActive(false)}>X</p>
                         </div>

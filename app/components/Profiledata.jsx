@@ -13,7 +13,7 @@ let Profiledata =async ({id}) => {
       <div className='flex flex-col lg:flex-row bg-[#141449] gap-6 h-auto lg:h-screen w-full mt-12 p-4 lg:p-0'>
         <div className='bg-[#141449] h-96 lg:h-3/4 w-full lg:w-1/4 mt-0 lg:mt-12 flex flex-col justify-center items-center shadow-2xl'>
           <div className='w-44 h-44 lg:w-48 lg:h-48 rounded-full'>
-            <img src={`/${data.data.profileimage}`} className='h-44 w-44 lg:h-48 lg:w-48 rounded-full' />
+            <img src={`/${data.data.profileimage}`} alt='profileimage' className='h-44 w-44 lg:h-48 lg:w-48 rounded-full' />
           </div>
           <div className='text-2xl text-white mt-2 lg:mt-4'>{data.data.username}</div>
           <Link href={`/profile/${data.data._id}`} className='text-2xl text-white bg-green-500 rounded-lg hover:bg-green-700 mt-4 px-5 py-3'>
