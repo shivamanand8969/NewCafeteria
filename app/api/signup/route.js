@@ -4,8 +4,13 @@ import { NextResponse } from "next/server"
 import bcrypt from 'bcryptjs'
 export let GET=async ()=>{
    await Connect();
-   let data=await User.find({});
-   return NextResponse.json({data})
+   try{
+      let data=await User.find({});
+      return NextResponse.json({data})
+   }
+   catch(e){
+      return NextResponse.json({"msg":e.message})
+   }
 }
 export let POST=async (req)=>{
    await Connect();

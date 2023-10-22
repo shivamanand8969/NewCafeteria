@@ -9,7 +9,7 @@ const adminlogin = () => {
   let router=useRouter();
 
   let loginSubmit=async ()=>{
-        let data=await fetch("/api/adminlogin",{
+        let data=await fetch(`${process.env.HOST}/api/adminlogin`,{
           method:"POST",
           headers:{
             "Content-Type":"application/json"

@@ -1,5 +1,4 @@
-import React from 'react'
-import Dashboard from '../../(design)/Dashboard';
+import React from 'react';
 import Image from 'next/image';
 
 const page = () => {

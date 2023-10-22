@@ -19,7 +19,7 @@ let bytes=await profileimage.arrayBuffer();
 let buffer=Buffer.from(bytes);
 let path=join('./public',profileimage.name)
 await writeFile(path,buffer)
-   let data=await fetch(`http://127.0.0.1:3000/api/mydata/${id}`,{
+   let data=await fetch(`${process.env.HOST}/api/mydata/${id}`,{
     method:'PUT',
     headers:{
         "Content-Type":"application/json"

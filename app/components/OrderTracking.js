@@ -27,7 +27,7 @@ const OrderTracking = ({data1}) => {
     let bool=confirm("Do You Want To Cencle Order")
     if(bool){
       
-   let deleteorder=await fetch(`/api/orderapi/${data1._id}`,{
+   let deleteorder=await fetch(`${process.env.HOST}/api/orderapi/${data1._id}`,{
      method:"DELETE",
      headers:{
        "Content-Type":"application/json"
