@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Header from './Header';
 import Footer from './Footer';
 const Myordercomponent = async ({id}) => {
-  let data1 = await fetch(`${process.env.HOST}/api/orderapi`,{cache:'no-store'});
+  let data1 = await fetch(`${process.env.NEXT_PUBLIC_NOT_SECRET_MESSAGE}/api/orderapi`,{cache:'no-store'});
   data1 = await data1.json();
     return (
     <>

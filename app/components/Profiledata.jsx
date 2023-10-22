@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Header from '../components/Header'
 
 let Profiledata =async ({id}) => {
-    let data=await fetch(`${process.env.HOST}/api/mydata/${id}`,{cache:"no-store"});
+    let data=await fetch(`${process.env.NEXT_PUBLIC_NOT_SECRET_MESSAGE}/api/mydata/${id}`,{cache:"no-store"});
     data=await data.json();
   
 

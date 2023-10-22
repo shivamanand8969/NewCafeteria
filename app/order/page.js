@@ -1,7 +1,7 @@
 import Product from '../components/Product'
 const page =async () => {
   
-  const data1 = await fetch(`${process.env.HOST}/api/additem`);
+  const data1 = await fetch(`${process.env.NEXT_PUBLIC_NOT_SECRET_MESSAGE}/api/additem`);
   const data = await data1.json();      
       
   return (

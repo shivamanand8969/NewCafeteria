@@ -3,7 +3,7 @@ import React from 'react'
 
 const page =async () => {
 
-  const order1=await fetch(`${process.env.HOST}/api/demodata`);
+  const order1=await fetch(`${process.env.NEXT_PUBLIC_NOT_SECRET_MESSAGE}/api/demodata`);
   const order=await order1.json();
   
   return (

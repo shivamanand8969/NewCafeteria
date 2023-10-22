@@ -38,12 +38,12 @@ const login = () => {
     notify();
     <ToastContainer />
     setLoadin(true)
-    let data = await fetch(`${process.env.HOST}/api/login`,{
+    let data = await fetch(`/api/login`,{
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ email, password })
+      body: JSON.stringify({email, password})
     })
     data = await data.json();
     alert(data.msg);

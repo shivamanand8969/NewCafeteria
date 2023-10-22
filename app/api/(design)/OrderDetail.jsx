@@ -10,7 +10,7 @@ const OrderDetail = ({order,id1}) => {
     
     let handleConfirm=async()=>{
           setIsConfirm(!isConfirm)
-      let confirmdata=await fetch(`${process.env.HOST}/api/orderapi/${id1}`,{
+      let confirmdata=await fetch(`${process.env.NEXT_PUBLIC_NOT_SECRET_MESSAGE}/api/orderapi/${id1}`,{
           method:"PUT",
           headers:{
               "Content-Type":"application/json"
@@ -22,7 +22,7 @@ const OrderDetail = ({order,id1}) => {
   }
   let handleProcesed=async()=>{
        setIsProcced(!isProcced)
-      let confirmdata=await fetch(`${process.env.HOST}/api/orderapi/${id1}`,{
+      let confirmdata=await fetch(`${process.env.NEXT_PUBLIC_NOT_SECRET_MESSAGE}/api/orderapi/${id1}`,{
           method:"PUT",
           headers:{
               "Content-Type":"application/json"
@@ -34,7 +34,7 @@ const OrderDetail = ({order,id1}) => {
   } 
   let handleShipped=async()=>{
        setIsShipped(!isShipped);
-      let confirmdata=await fetch(`${process.env.HOST}/api/orderapi/${order._id}`,{
+      let confirmdata=await fetch(`${process.env.NEXT_PUBLIC_NOT_SECRET_MESSAGE}/api/orderapi/${order._id}`,{
           method:"PUT",
           headers:{
               "Content-Type":"application/json"
@@ -46,7 +46,7 @@ const OrderDetail = ({order,id1}) => {
   } 
   let handleDelivery=async()=>{
       setIsDelivery(!isDelivery)
-      let confirmdata=await fetch(`${process.env.HOST}/api/orderapi/${order._id}`,{
+      let confirmdata=await fetch(`${process.env.NEXT_PUBLIC_NOT_SECRET_MESSAGE}/api/orderapi/${order._id}`,{
           method:"PUT",
           headers:{
               "Content-Type":"application/json"

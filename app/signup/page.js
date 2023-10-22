@@ -4,31 +4,7 @@ import { writeFile } from 'fs/promises'
 import { join } from 'path'
 import Header from '../components/Header'
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
-const signup = () => {
-       const notifysuccess = () => toast.success('🦄 SignUp Successfully ! please wait a minute ot redirect Login page!', {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-    const notifyunerror = () => toast.error('🦄 Login Unsuccessfull !', {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-     
+let signup = () => {    
     let handleSubmit = async (data) => {
         "use server"
         let username = data.get('username')
@@ -42,12 +18,9 @@ const signup = () => {
         let bytes = await profileimage.arrayBuffer();
         let buffer = Buffer.from(bytes);
         let path = join('./public', profileimage.name);
-        await writeFile(path, buffer);
-    
-                                                                                                                                                                                                                                
+        await writeFile(path, buffer);                                                                                                                                                                                                                        
         if (username.length > 1 && email.length > 1 && password.length > 6 && number.length >= 10 && district.length > 1 && address.length > 1 && pincode.length > 5) {
-            
-            let datafetche = await fetch(`${process.env.HOST}/api/signup`, {
+            let datafetche = await fetch(`${process.env.NEXT_PUBLIC_NOT_SECRET_MESSAGE}/api/signup`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -72,18 +45,7 @@ const signup = () => {
     }
     
     return (
-        <>
-        <ToastContainer position="top-center"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="light" />
-            <Header />
+        <>       <Header />
             <div className='w-full h-[146vh] lg:h-[100vh] bg-slate-900 flex justify-center items-center'>
                 <div className='w-[80vw] h-[80vh] flex flex-col  justify-center items-center'>
                     <form className='flex gap-3 flex-col lg:flex-row' action={handleSubmit}>

@@ -71,7 +71,7 @@ const SingleProduct = (props) => {
 
   let order = async () => {
     if(isable){
-      let data = await fetch(`${process.env.HOST}/api/demodata`, {
+      let data = await fetch(`/api/demodata`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

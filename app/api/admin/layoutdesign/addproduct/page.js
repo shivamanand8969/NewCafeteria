@@ -15,7 +15,7 @@ const additem = () => {
     let path=join('./public',file.name);
     await writeFile(path,buffer);
     let imageurl=file.name;
-    let data=await fetch(`${process.env.HOST}/api/additem`,{
+    let data=await fetch(`${process.env.NEXT_PUBLIC_NOT_SECRET_MESSAGE}/api/additem`,{
       method:"POST",
       headers:{
         "Content-Type":"application/json"

@@ -12,7 +12,7 @@ const Updatefrom = ({data1, id}) => {
   let router=useRouter();
       let handleUpdate=async (e)=>{
        e.preventDefault();
-       let updatedata=await fetch(`${process.env.HOST}/api/product/${id}`,{
+       let updatedata=await fetch(`${process.env.NEXT_PUBLIC_NOT_SECRET_MESSAGE}/api/product/${id}`,{
         method:"PUT",
         headers:{
             "Content-Type":"application/json"

@@ -3,13 +3,13 @@ import Link from 'next/link';
 import React from 'react';
 
 const CustomerOrderList = async () => {
-  let product= await fetch(`${process.env.HOST}/api/additem`,{cache:'no-store'});
+  let product= await fetch(`${process.env.NEXT_PUBLIC_NOT_SECRET_MESSAGE}/api/additem`,{cache:'no-store'});
   product=await product.json();
 
   let handleDelete=async (fordata)=>{
     "use server"
       let id=fordata.get('id');
-      let datadelete=await fetch(`${process.env.HOST}/api/product/${id}`,{
+      let datadelete=await fetch(`${process.env.NEXT_PUBLIC_NOT_SECRET_MESSAGE}/api/product/${id}`,{
         method:"DELETE",
         headers:{
           "Content-Type":"application/json"
