@@ -12,15 +12,13 @@ const Mainsection = () => {
             <section>
                 <div className='container text-white flex flex-col items-center gap-10 '>
                     <div className=''>
-                        <Image className='sm:hidden' src="/burger.jpg" height={300} width={300} alt='image not found' />
+                        <Image className='sm:hidden' src="/burgerimage.jpg" height={300} width={300} alt='image not found' />
                         <div className='w-[100vw] left-0 bg-black  h-[100vh] max-sm:hidden flex justify-center items-center z-10 relative'>
                             <div className='flex justify-center items-center absolute flex-col'>
                                 <div className='text-7xl text-white font-bold'>WELCOME TO OUR FOOD </div><div className='text-7xl font-bold text-yellow-500'>DELEVERY APP</div>
-                                {/* <button className=' inline-block text-sm py-3 px-8 capitalize text-center cursor-pointer rounded-md font-sans font-bold ease-linear duration-200 text-black  bg-yellow-400 hover:opacity-75 lg:text-6xl'><Link href={'#ch4'}>Order Now</Link></button> */}
                             </div>
                             <video src='/burgervideo.mp4' height={200} width={1500} className=' bg-black object-cover text-center overflow-hidden' autoPlay muted loop />
                         </div>
-                        {/* <Image className='max-sm:hidden ' src="/burger.jpg" height={800} width={800} alt='image not found' /> */}
                     </div>
                     <div className='text-center mt-0 lg:mt-6'>
                         <h1 className='text-4xl font-sans font-bold '>HAPPY TUMMY WITH TASTY FAST FOOD</h1>

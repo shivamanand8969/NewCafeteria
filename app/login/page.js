@@ -38,7 +38,7 @@ const login = () => {
     notify();
     <ToastContainer />
     setLoadin(true)
-    let data = await fetch("/api/login", {
+    let data = await fetch("/api/login",{
       method: "POST",
       headers: {
         "Content-Type": "application/json"

@@ -1,11 +1,12 @@
 import mongoose from "mongoose"
+import { NextResponse } from "next/server"
 
-let Connect =async () => {
+     async function Connect(){
       try{
       await mongoose.connect(process.env.connectionStr)
       }
       catch(e){
-        throw new Error(e);
+        return NextResponse.json({"msg":e.message})
       }
 }
 

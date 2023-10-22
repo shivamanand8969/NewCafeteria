@@ -40,7 +40,7 @@ const Productfetchdata = ({ data1 }) => {
                         <lable className='text-sm text-yellow-500'>Price L To H</lable>
                     </div>
                     <div className='flex gap-2 items-center'>
-                        <input type='checkbox' className='text-2xl' value={descsort} onChange={(e) => setDescsort(!descsort)} />
+                        <input  type='checkbox' className='text-2xl' value={descsort} onChange={(e) => setDescsort(!descsort)} />
                         <lable className='text-sm text-yellow-500 '>Price H To L</lable>
                     </div>
                 </div>
@@ -52,7 +52,7 @@ const Productfetchdata = ({ data1 }) => {
                             filterdata.map((value, key) => (
                                 <li key={key} className='text-white p-4 grid grid-cols-1 gap-5 border-blue-700  hover:border-white ease-linear duration-100 rounded-md shadow-xl border-4'>
                                     <div className='grid place-items-center rounded-3xl ease-linear duration-200 lg:h-40'>
-                                        <Image src={`/${value.imageurl}`} height={300} width={300} alt='food image' className='hover:scale-110 ease-linear duration-200' />
+                                        <Image src={`/${value.imageurl}`} priority={true} height={300} width={300} alt='food image' className='hover:scale-110 ease-linear duration-200 h-auto w-auto' />
                                     </div>
                                     <div className='pt-2'>
                                         <div className='mb-2'>

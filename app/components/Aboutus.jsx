@@ -5,7 +5,6 @@ import React, { useState } from 'react'
 import { BiLogInCircle } from 'react-icons/bi';
 import Header from './Header';
 import Footer from './Footer';
-
 let Aboutus = ({data,id}) => {
        let router=useRouter();
          let [comment,setCommet]=useState();

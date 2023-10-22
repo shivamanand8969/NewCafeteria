@@ -7,7 +7,7 @@ const Cart = () => {
       <section>
             <div className='container flex flex-col gap-5 lg:flex-row '>
             <div className='bg-yellow-600 flex  rounded-lg overflow-hidden'>
-                <div className='basis-1/3 relative '><Image src='/burger.jpg'  height={300} width={300} alt='image'/>
+                <div className='basis-1/3 relative '><Image src='/burgerimage.jpg'  height={300} width={300} alt='image'/>
                 </div>
                 <div>
                     <div className=''>
@@ -19,7 +19,7 @@ const Cart = () => {
             </div>
 
             <div className='bg-red-600 flex  rounded-lg overflow-hidden'>
-                <div className='basis-1/3 relative '><Image src='/burger.jpg'  height={300} width={300} alt='image'/>
+                <div className='basis-1/3 relative '><Image src='/burgerimage.jpg'  height={300} width={300} alt='image'/>
                 </div>
                 <div>
                     <div className=''>
@@ -31,7 +31,7 @@ const Cart = () => {
             </div>
 
             <div className='bg-green-400 flex  rounded-lg overflow-hidden'>
-                <div className='basis-1/3 relative '><Image src='/burger.jpg'  height={300} width={300} alt='image'/>
+                <div className='basis-1/3 relative '><Image src='/burgerimage.jpg'  height={300} width={300} alt='image'/>
                 </div>
                 <div>
                     <div className=''>
