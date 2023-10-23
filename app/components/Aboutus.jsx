@@ -10,7 +10,7 @@ let Aboutus = ({data,id}) => {
        let router=useRouter();
          let [comment,setCommet]=useState();
          let handleSubmit=async ()=>{
-            let postcomment=await fetch(`${process.env.NEXT_PUBLIC_NOT_SECRET_REVIEW}/api/review`,{
+            let postcomment=await fetch(`/api/review`,{
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json"
