@@ -5,6 +5,7 @@ import { join } from 'path'
 import Header from '../components/Header'
 
 let signup = () => {    
+    console.log(process.env.NEXT_PUBLIC_NOT_SECRET_MESSAGE)
     let handleSubmit = async (data) => {
         "use server"
         let username = data.get('username')
@@ -40,9 +41,7 @@ let signup = () => {
         else{
             console.log("Please fill Correct Data")
         }
-    
-   
-    }
+}
     
     return (
         <>       <Header />
