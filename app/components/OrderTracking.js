@@ -22,12 +22,10 @@ const OrderTracking = ({data1}) => {
   });
  
   let router=useRouter();
-  let handleCencle=async ()=>{
-    
+  let handleCencle=async ()=>{  
     let bool=confirm("Do You Want To Cencle Order")
     if(bool){
-      
-   let deleteorder=await fetch(`${process.env.NEXT_PUBLIC_NOT_SECRET_MESSAGE}/api/orderapi/${data1._id}`,{
+   let deleteorder=await fetch(`/api/orderapi/${data1._id}`,{
      method:"DELETE",
      headers:{
        "Content-Type":"application/json"
@@ -65,14 +63,14 @@ const OrderTracking = ({data1}) => {
         <ul className='flex flex-col md:flex-col lg:flex-col justify-center items-center '>
             {
               
-            (data1.isConfirm)?<><li className='h-10 w-10 flex justify-center items-center text-3xl rounded-full bg-blue-500 text-black'><GiCheckMark/></li><span className='text-white text-sm'>Order Confirm</span>
+            (data1?.isConfirm)?<><li className='h-10 w-10 flex justify-center items-center text-3xl rounded-full bg-blue-500 text-black'><GiCheckMark/></li><span className='text-white text-sm'>Order Confirm</span>
             </>:<><li className='h-10 w-10 flex justify-center items-center text-3xl rounded-full bg-white text-black'><GiCheckMark/></li><span className='text-white text-sm'>Order Confirm</span>
 
             </>
             }
             {
               
-            (data1.isProcced)?<>
+            (data1?.isProcced)?<>
             <li className='h-28 w-1 bg-blue-500'></li>
             <li className='h-10 w-10 flex justify-center items-center text-3xl rounded-full bg-blue-500 text-black'><GiCheckMark/></li><span className=' text-white text-sm'>Packed</span>
             </> :
@@ -84,7 +82,7 @@ const OrderTracking = ({data1}) => {
               }
             {
              
-              (data1.isShipped)? <>
+              (data1?.isShipped)? <>
             <li className='h-28 w-1 bg-blue-500'></li>
               <li className='h-10 w-10 flex justify-center items-center text-3xl rounded-full bg-blue-500 text-black'><GiCheckMark/></li><span className=' text-white text-sm'>Shipped</span>
          </> :<>
@@ -95,7 +93,7 @@ const OrderTracking = ({data1}) => {
               
             }
             {
-              (data1.isDelivery)?<> <li className='h-28 w-1 bg-blue-500'></li>
+              (data1?.isDelivery)?<> <li className='h-28 w-1 bg-blue-500'></li>
               <li className='h-10 w-10 flex justify-center items-center text-3xl rounded-full bg-blue-500 text-black'><GiCheckMark/></li><span className='text-white text-sm'>Delivery</span>
             </>:<> <li className='h-28 w-1 bg-white'></li>
               <li className='h-10 w-10 flex justify-center items-center text-3xl rounded-full bg-white text-black'><GiCheckMark/></li><span className='text-white text-sm'>Delivery</span>
@@ -109,32 +107,32 @@ const OrderTracking = ({data1}) => {
   <div className="container px-5 py-8  pt-2 mx-auto">
     <div className="lg:w-4/5 mx-auto flex flex-wrap">
       <div className="lg:w-1/2 w-full lg:pr-10 lg:py-6  mb-6 lg:mb-0">
-        <h2 className=" title-font text-white text-3xl tracking-widest">{data1.prname}</h2>
+        <h2 className=" title-font text-white text-3xl tracking-widest">{data1?.prname}</h2>
         <h1 className="text-white text-3xl title-font font-medium mb-4"></h1>
         <div className="flex mb-4">
           <a className="flex-grow text-indigo-400 border-b-2 border-indigo-500 py-2 text-lg px-1">Description</a>
           {/* <a className="flex-grow border-b-2 border-gray-800 py-2 text-lg px-1">Reviews</a> */}
           {/* <a className="flex-grow border-b-2 border-gray-800 py-2 text-lg px-1">Details</a> */}
         </div>
-        <p className="leading-relaxed mb-4">{data1.desc}</p>
+        <p className="leading-relaxed mb-4">{data1?.desc}</p>
         <div className="flex border-t border-gray-800 py-2">
           <span className="text-gray-500">Price</span>
-          <span className="ml-auto text-white">{data1.prname}</span>
+          <span className="ml-auto text-white">{data1?.prname}</span>
         </div>
         <div className="flex border-t border-gray-800 py-2">
           <span className="text-gray-500">Quantity</span>
-          <span className="ml-auto text-white">{data1.quantity}</span>
+          <span className="ml-auto text-white">{data1?.quantity}</span>
         </div>
         <div className="flex border-t  border-gray-800 py-2">
           <span className="text-gray-500">Total</span>
-          <span className="ml-auto text-white">{data1.prPrice*data1.quantity}</span>
+          <span className="ml-auto text-white">{data1?.prPrice*data1?.quantity}</span>
         </div>
         <div className="flex border-t border-b mb-6 border-gray-800 py-2">
           <span className="text-gray-500">Order Date</span>
-          <span className="ml-auto text-white">{data1.createdAt.split('T')[0]}</span>
+          <span className="ml-auto text-white">{data1?.createdAt.split('T')[0]}</span>
         </div>
         <div className="flex">
-          <span className="title-font font-medium text-2xl text-white">$ {data1.prPrice*data1.quantity}</span>
+          <span className="title-font font-medium text-2xl text-white">$ {data1?.prPrice*data1?.quantity}</span>
           <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Pay Bill</button>
           <button onClick={handleCencle} className="flex ml-auto text-white bg-red-500  border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Cencle Order</button>
           </div>
