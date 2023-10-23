@@ -3,6 +3,7 @@ import Link from 'next/link'
 import React, { useRef, useState } from 'react'
 import { BsCartFill } from 'react-icons/bs'
 import { BiSolidUserCircle } from 'react-icons/bi'
+import { GiHamburgerMenu } from 'react-icons/gi';
 
 let Header = () => {
 
@@ -46,7 +47,7 @@ let Header = () => {
                         </div>
                     </div> : <div><div>
 
-                        <div id='hamburger' onClick={() => setActive(!active)}><p className='cursor-pointer ml-4 text-4xl mr-9'>+</p></div>
+                        <div id='hamburger' onClick={() => setActive(!active)}><p className='cursor-pointer ml-4 text-4xl mr-9'><GiHamburgerMenu/></p></div>
                     </div></div>
                 }
 
