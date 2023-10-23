@@ -39,10 +39,15 @@ export   let handlesignup = async (data) => {
   let address = data.get('address')
   let pincode = data.get('pincode')
   let profileimage = data.get('profileimage')
+  try{
   let bytes = await profileimage.arrayBuffer();
   let buffer = Buffer.from(bytes);
   let path = join('./public', profileimage.name);
-  await writeFile(path, buffer);                                                                                                                                                                                                                        
+  await writeFile(path, buffer);         
+  }
+  catch(e){
+    throw new Error(e.message)
+  }                                                                                                                                                                                                               
   if (username.length > 1 && email.length > 1 && password.length > 6 && number.length >= 10 && district.length > 1 && address.length > 1 && pincode.length > 5) {
       let datafetche = await fetch(`/api/signup`,{
           method: "POST",
