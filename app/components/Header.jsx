@@ -31,7 +31,7 @@ let Header = () => {
                                 <Link className='text-yellow-500 hover:text-yellow-700 hover:underline text-lg ease-in duration-200' href='/aboutus'>About Us</Link>
                             </li>
                             <li>
-                                <Link className='text-yellow-500 hover:underline text-lg  hover:text-yellow-700 ease-in duration-200' href='/myorder'>My Order</Link>
+                                <a className='text-yellow-500 hover:underline text-lg  hover:text-yellow-700 ease-in duration-200' href='/myorder'>My Order</a>
                             </li>
                             <li>
                                 <Link className='text-yellow-500 text-lg hover:underline hover:text-yellow-500 ease-in duration-200' href='/cart'>cart</Link>

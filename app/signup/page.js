@@ -10,7 +10,7 @@ let signup = () => {
         <>       <Header />
             <div className='w-full h-[146vh] lg:h-[100vh] bg-slate-900 flex justify-center items-center'>
                 <div className='w-[80vw] h-[80vh] flex flex-col  justify-center items-center'>
-                    <form className='flex gap-3 flex-col lg:flex-row pt-6' action={handlesignup}>
+                    <form className='flex gap-3 flex-col lg:flex-row pt-10' action={handlesignup}>
                         <div className='flex flex-col gap-3  '>
                             <div className='flex flex-col gap-2 bg-slate-950 rounded-sm px-5 py-2'>
                                 <lable htmlFor='name' className='text-white text-center text-lg'>Name</lable>
