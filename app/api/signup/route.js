@@ -15,7 +15,7 @@ export let GET=async ()=>{
 export let POST=async (req)=>{
    await Connect();
      let data=await req.json();
-     let {username, email, password, number, district, address, pincode, profileimage}=data;
+     let {username, email, password, number, district, address, pincode}=data;
      let checkmail=await User.findOne({email})
      if(checkmail){
         return NextResponse.json({"msg":"Email Already Exist"})
@@ -23,7 +23,7 @@ export let POST=async (req)=>{
      let hashedpassword=await bcrypt.hash(password,8);
 
 
-     let newUser=new User({username, email, password:hashedpassword, number, district, address, pincode, profileimage});
+     let newUser=new User({username, email, password:hashedpassword, number, district, address, pincode});
 
      try{
         let newdata=await newUser.save();

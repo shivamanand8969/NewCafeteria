@@ -5,7 +5,7 @@ import { handlesignup } from '../action'
 
 let signup = () => {    
   
-    
+
     return (
         <>       <Header />
             <div className='w-full h-[146vh] lg:h-[100vh] bg-slate-900 flex justify-center items-center'>
@@ -42,10 +42,10 @@ let signup = () => {
                                 <lable htmlFor='pincode' className='text-white text-center text-lg'>PinCode</lable>
                                 <input id='pincode' placeholder='Pin Code Must be 8 Digit' required className='h-9 w-80 outline-0 rounded-sm text-lg text-black' type='number' name='pincode' />
                             </div>
-                            <div className='flex flex-col gap-2 bg-slate-950 rounded-sm px-5 py-2'>
+                            {/* <div className='flex flex-col gap-2 bg-slate-950 rounded-sm px-5 py-2'>
                                 <lable htmlFor='profile' className='text-white text-center text-lg'>Upload Your Profile Image</lable>
                                 <input id='profile' className='h-9 w-80 outline-0 rounded-sm text-lg text-black' type='file' name='profileimage' />
-                            </div>
+                            </div> */}
                             <div className='bg-black px-7 mt-2 py-5 rounded-md text-white  '>
                                 <button type='submit' className='px-10 py-3 bg-red-600  hover:bg-red-500 text-white w-80 text-xl font-sans border-black border-5'>Submit</button>
                             </div>
