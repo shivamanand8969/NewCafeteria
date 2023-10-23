@@ -44,7 +44,7 @@ export   let handlesignup = async (data) => {
   let path = join('./public', profileimage.name);
   await writeFile(path, buffer);                                                                                                                                                                                                                        
   if (username.length > 1 && email.length > 1 && password.length > 6 && number.length >= 10 && district.length > 1 && address.length > 1 && pincode.length > 5) {
-      let datafetche = await fetch(`${process.env.NEXT_PUBLIC_NOT_SECRET_MESSAGE}/api/signup`,{
+      let datafetche = await fetch(`/api/signup`,{
           method: "POST",
           headers: {
               "Content-Type": "application/json"
