@@ -52,7 +52,7 @@ let signup = () => {
             setChecksubmit(false)
             return
         }
-        
+    
         
         let datafetche = await fetch(`${process.env.NEXT_PUBLIC_NOT_SECRET_MESSAGE}/api/signup`,{
             method: "POST",
@@ -62,9 +62,15 @@ let signup = () => {
             body: JSON.stringify({ username, email, password, number, district, address, pincode })
         })
         datafetche = await datafetche.json();
-        if(datafetche.msg==='Sign Up successfully'){    
-            router.push('/login')
+        if(datafetche.msg==='Sign Up successfully'){   
+            alert(datafetche.msg) 
             setChecksubmit(false)   
+            router.push('/login')
+        }
+        else{
+            setChecksubmit(false)   
+            alert(datafetche.msg) 
+            router.push('/signup')
         }
       
     }
