@@ -63,9 +63,8 @@ let signup = () => {
         })
         datafetche = await datafetche.json();
         if(datafetche.msg==='Sign Up successfully'){    
-            setChecksubmit(false)     
-            alert(datafetche.msg)
             router.push('/login')
+            setChecksubmit(false)   
         }
       
     }
