@@ -48,7 +48,7 @@ export let handlesignup = async (data) => {
   // catch(e){
   //   throw new Error(e.message)
   // }                                                                                                                                                                                                               
-  if (username.length > 1 && email.length > 1 && password.length > 6 && number.length >= 10 && district.length > 1 && address.length > 1 && pincode.length > 5) {
+  
       let datafetche = await fetch(`${process.env.NEXT_PUBLIC_NOT_SECRET_MESSAGE}/api/signup`,{
           method: "POST",
           headers: {
@@ -65,8 +65,6 @@ export let handlesignup = async (data) => {
           console.log(datafetche.msg)
           redirect('/signup')
       }
-  }
-  else{
-      console.log("Please fill Correct Data")
-  }
+  
+ 
 }
