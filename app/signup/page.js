@@ -52,7 +52,7 @@ let signup = () => {
             setChecksubmit(false)
             return
         }
-        console.log('username', username, 'email', email, 'password', password, 'number', number, 'district', district, 'address', address, 'pincode', pincode)
+        
         
         let datafetche = await fetch(`${process.env.NEXT_PUBLIC_NOT_SECRET_MESSAGE}/api/signup`,{
             method: "POST",
