@@ -71,8 +71,6 @@ const Productfetchdata = ({ data1 }) => {
                             ))
                         }
 
-
-
                     </ul>
                 </div>
             </div>

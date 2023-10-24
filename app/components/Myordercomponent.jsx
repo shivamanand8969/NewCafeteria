@@ -3,9 +3,9 @@ import Link from 'next/link'
 import Header from './Header'
 import Footer from './Footer'
 const Myordercomponent = async ({ id }) => {
-  let data1 = await fetch(`${process.env.NEXT_PUBLIC_NOT_SECRET_MESSAGE}/api/orderapi`,{cache:"no-store"});
-  data1 = await data1.json();
-  
+  let data1 = await fetch(`${process.env.NEXT_PUBLIC_NOT_SECRET_MESSAGE}/api/demodata`,{cache:"no-store"});
+  data1 = await data1.json()
+
   return (
     <>
       <Header />
@@ -25,9 +25,7 @@ const Myordercomponent = async ({ id }) => {
                 </div>
               </div>
               <div>
-                <div className=' flex justify-between  '>
-
-
+                <div className='flex justify-between'>
                   <Link className='px-5 py-2 text-lg  rounded-md bg-green-500 text-white hover:bg-green-700 ' href={`/myorder/${value._id}`}>view</Link>
                 </div>
               </div>
