@@ -8,46 +8,128 @@ let signup = () => {
 
     let [checksubmit, setChecksubmit] = useState(false)
     let [username, setUsername] = useState('')
+    let [usernamecheck,setusernameCheck]=useState(false)
     let [email, setEmail] = useState('')
+    let [checkmail,setCheckmail]=useState(false)
     let [password, setPassword] = useState('')
+    let [checkpassword,setCheckpassword]=useState(false);
     let [number, setNumber] = useState('')
+    let [checknumber,setCheckNumber]=useState(false)
     let [district, setDistrict] = useState('')
+    let [distirctcheck,setDistrictcheck]=useState(false);
     let [address, setAddress] = useState('')
+    let [addresscheck,setAddresscheck]=useState(false);
     let [pincode, setPincode] = useState(0)
-    let handleSignup =async (e) => {
+    let [checkpincode,setCheckpincode]=useState(false);
+    let handlename=(e)=>{
+        let name=e.target.value;
+        setUsername(name);
+        if(name.length<=3 || name.length>18){
+           setusernameCheck(true);
+        }
+        else{
+            setusernameCheck(false);
+        }
+    }
+    let handlepassword=(e)=>{
+        let pass=e.target.value;
+        setPassword(pass);
+        if(pass.length<8){
+            setCheckpassword(true);
+        }
+        else{
+            setCheckpassword(false);
+        }
+    }
+    let handlepin=(e)=>{
+          let pin=e.target.value;
+          setPincode(pin);
+          if(!pin.match(/^\d{6}$/))
+          {
+            setCheckpincode(true);
+          }
+          else{
+            setCheckpincode(false);
+          }
+    }
+    let handlenumber=(e)=>{
+        let ph_noumer=e.target.value;
+        setNumber(ph_noumer)
+        // let regExp= /^[6-9]\d{9}$/;
+        if(!ph_noumer.match(/^[6-9]\d{9}$/)){
+            setCheckNumber(true);
+        }
+        else{
+            setCheckNumber(false)
+        }
+    }
+    let handleemail=(e)=>{
+        let emailRegx=/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+        let email=e.target.value;
+        setEmail(email);
+        if(!email.match(emailRegx)){
+            setCheckmail(true)
+        }
+        else{
+            setCheckmail(false)
+        }
+
+    }
+    let handleAddress=(e)=>{
+        let addr=e.target.value;
+        setAddress(addr)
+        if(!addr.match(/^[A-Za-z\s]+$/)){
+            setAddresscheck(true);
+        }
+        else{
+            setAddresscheck(false)
+        }
+    }
+    let handleDistrict=(e)=>{
+                 let district=e.target.value;
+                 setDistrict(district)
+                 let disregx=/^[A-Za-z\s]+$/;
+                 if(!district.match(disregx)){
+                    setDistrictcheck(true);
+                 }
+                 else{
+                    setDistrictcheck(false)
+                 }
+    }
+        let handleSignup =async (e) => {
         setChecksubmit(true)
         e.preventDefault()
-        if(!username.length){
+        if(username.length<=3 || username.length>18){
             setChecksubmit(false)
-           alert("Enter Your Name")
+           alert("Enter the valid Name")
            return
         }
-        if (email.length < 6) {
+        if (!email.match(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/)) {
             setChecksubmit(false)
             alert('Please enter a valid Email')
             return
         }   
-        if (!password) {
+        if (password.length<8){
             alert("Enter your Password")
             setChecksubmit(false)
             return
         } 
-        if (number.length !== 10) {
-            alert("Mobile Number must be 10 digits")
+        if (number.length != 10 || !(number.match(/^[6-9]\d{9}$/))) {
+            alert("Enter the Valid Phone Number")
             setChecksubmit(false)
             return
         }
-        if (district.length < 4) {
+        if (!district.match(/^[A-Za-z\s]+$/)){
             alert("Please enter a valid District")
             setChecksubmit(false)
             return
         }
-        if (address.length < 4) {
+        if (!address.match(/^[A-Za-z\s]+$/)) {
             alert("Please enter a valid Address")
             setChecksubmit(false)
             return
         }
-        if (pincode.length !== 6) {
+        if (!pincode.match(/^\d{6}$/ || pincode.length!=6)) {
             alert("Please enter a valid 6-digit Pincode")
             setChecksubmit(false)
             return
@@ -84,33 +166,50 @@ let signup = () => {
                         <div className='flex flex-col gap-3  '>
                             <div className='flex flex-col gap-2 bg-slate-950 rounded-sm px-5 py-2'>
                                 <lable htmlFor='name' className='text-white text-center text-lg'>Name</lable>
-                                <input id='name' value={username} onChange={(e)=>setUsername(e.target.value)} required placeholder='Enter the Name' className='h-10 w-80 outline-0 rounded-sm text-lg text-black px-1' type='text' />
+                                <input id='name' value={username} onChange={handlename} required placeholder='Enter the Name' className='h-10 w-80 outline-0 rounded-sm text-lg text-black px-1' type='text' />
+                              {
+
+                              usernamecheck? <p className='text-red-500'>Enter The valid name</p>:''
+                              }
                             </div>
                             <div className='flex flex-col gap-2 bg-slate-950 rounded-sm px-5 py-2'>
                                 <lable htmlFor='email' className='text-white text-center text-lg'>Email</lable>
-                                <input id='email' value={email} onChange={(e)=>setEmail(e.target.value)} required placeholder='Enter the Email' className='h-10 w-80 outline-0 rounded-sm text-lg text-black px-1' type='email' />
+                                <input id='email' value={email} onChange={handleemail} required placeholder='Enter the Email' className='h-10 w-80 outline-0 rounded-sm text-lg text-black px-1' type='email' />
+                                {
+                                  checkmail?  <p className='text-red-500'>Enter The Valid Email</p>:''
+                                }
                             </div>
                             <div className='flex flex-col gap-2 bg-slate-950 rounded-sm px-5 py-2'>
                                 <lable htmlFor='password' className='text-white text-center text-lg'>Create Password</lable>
-                                <input id='password' value={password} onChange={(e)=>setPassword(e.target.value)} placeholder='Password Must be 9 Digit' required className='h-10 px-1 w-80 outline-0 rounded-sm text-lg text-black' type='text'/>
+                                <input id='password' value={password} onChange={handlepassword} placeholder='Password Must be 9 Digit' required className='h-10 px-1 w-80 outline-0 rounded-sm text-lg text-black' type='text'/>
+                               {checkpassword? <p className='text-red-500'>Password Must be 8 digit</p>:''}
                             </div>
                             <div className='flex flex-col gap-2 bg-slate-950 rounded-sm px-5 py-2'>
                                 <lable htmlFor='mnumber' className='text-white text-center text-lg'>Mobile Number</lable>
-                                <input id='mnumber' value={number} onChange={(e)=>setNumber(e.target.value)} placeholder='Number Must be 10 Digit' required className='h-10 w-80 px-1 outline-0 rounded-sm text-lg text-black' type='text'/>
+                                <input id='mnumber' value={number} onChange={handlenumber} placeholder='Number Must be 10 Digit' required className='h-10 w-80 px-1 outline-0 rounded-sm text-lg text-black' type='text'/>
+                            {
+                                checknumber?<p className='text-red-500'>Phone Number Must be valid</p>:''
+                            }
                             </div>
-                            <div className='flex flex-col gap-2 bg-slate-950 rounded-sm px-5 py-2'>
-                                <lable htmlFor='district' className='text-white text-center text-lg'>District</lable>
-                                <input id='district' value={district} onChange={(e)=>setDistrict(e.target.value)} placeholder='purnia..' required className='h-10 w-80 outline-0 rounded-sm px-1 text-lg text-black' type='text' />
-                            </div>
+                           
                         </div>
                         <div>
+                             <div className='flex flex-col gap-2 bg-slate-950 rounded-sm px-5 py-2'>
+                                <lable htmlFor='district' className='text-white text-center text-lg'>District</lable>
+                                <input id='district' value={district} onChange={handleDistrict} placeholder='purnia..' required className='h-10 w-80 outline-0 rounded-sm px-1 text-lg text-black' type='text' />
+                              { 
+                              distirctcheck?<p className='text-red-500'>Enter Valid District</p>:''
+                              }
+                            </div>
                             <div className='flex flex-col gap-2 bg-slate-950 rounded-sm px-5 py-2'>
                                 <lable htmlFor='addres' className='text-white text-center text-lg'>Address</lable>
-                                <input id='addres' value={address} onChange={(e)=>setAddress(e.target.value)} placeholder='Khoksibag...' required className='h-10 w-80 outline-0 rounded-sm px-1 text-lg text-black' type='text'/>
+                                <input id='addres' value={address} onChange={handleAddress} placeholder='Khoksibag...' required className='h-10 w-80 outline-0 rounded-sm px-1 text-lg text-black' type='text'/>
+                             { addresscheck?<p className='text-red-500'>Enter the Valid Address</p>:''}
                             </div>
                             <div className='flex flex-col gap-2 bg-slate-950 rounded-sm px-5 py-2'>
                                 <lable htmlFor='pincode' className='text-white text-center text-lg'>PinCode</lable>
-                                <input id='pincode' value={pincode} onChange={(e)=>setPincode(e.target.value)} placeholder='Pin Code Must be 8 Digit' required className='h-10 w-80 outline-0 px-1 rounded-sm text-lg text-black' type='number'  />
+                                <input id='pincode' value={pincode} onChange={handlepin} placeholder='Pin Code Must be 8 Digit' required className='h-10 w-80 outline-0 px-1 rounded-sm text-lg text-black' type='number'  />
+                              { checkpincode? <p className='text-red-500'>Enter The Valid PinCode</p>:''}
                             </div>
                             {/* <div className='flex flex-col gap-2 bg-slate-950 rounded-sm px-5 py-2'>
                                 <lable htmlFor='profile' className='text-white text-center text-lg'>Upload Your Profile Image</lable>
