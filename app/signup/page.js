@@ -166,7 +166,7 @@ let signup = () => {
                         <div className='flex flex-col gap-3  '>
                             <div className='flex flex-col gap-2 bg-slate-950 rounded-sm px-5 py-2'>
                                 <lable htmlFor='name' className='text-white text-center text-lg'>Name</lable>
-                                <input id='name' value={username} onChange={handlename} required placeholder='Enter the Name' className='h-10 w-80 outline-0 rounded-sm text-lg text-black px-1' type='text' />
+                                <input id='name' value={username} autoComplete='off' onChange={handlename} required placeholder='Enter the Name' className='h-10 w-80 outline-0 rounded-sm text-lg text-black px-1' type='text' />
                               {
 
                               usernamecheck? <p className='text-red-500'>Enter The valid name</p>:''
@@ -174,19 +174,19 @@ let signup = () => {
                             </div>
                             <div className='flex flex-col gap-2 bg-slate-950 rounded-sm px-5 py-2'>
                                 <lable htmlFor='email' className='text-white text-center text-lg'>Email</lable>
-                                <input id='email' value={email} onChange={handleemail} required placeholder='Enter the Email' className='h-10 w-80 outline-0 rounded-sm text-lg text-black px-1' type='email' />
+                                <input id='email' value={email} autoComplete='off' onChange={handleemail} required placeholder='Enter the Email' className='h-10 w-80 outline-0 rounded-sm text-lg text-black px-1' type='email' />
                                 {
                                   checkmail?  <p className='text-red-500'>Enter The Valid Email</p>:''
                                 }
                             </div>
                             <div className='flex flex-col gap-2 bg-slate-950 rounded-sm px-5 py-2'>
                                 <lable htmlFor='password' className='text-white text-center text-lg'>Create Password</lable>
-                                <input id='password' value={password} onChange={handlepassword} placeholder='Password Must be 9 Digit' required className='h-10 px-1 w-80 outline-0 rounded-sm text-lg text-black' type='text'/>
+                                <input id='password' value={password} autoComplete='off' onChange={handlepassword} placeholder='Password Must be 9 Digit' required className='h-10 px-1 w-80 outline-0 rounded-sm text-lg text-black' type='text'/>
                                {checkpassword? <p className='text-red-500'>Password Must be 8 digit</p>:''}
                             </div>
                             <div className='flex flex-col gap-2 bg-slate-950 rounded-sm px-5 py-2'>
                                 <lable htmlFor='mnumber' className='text-white text-center text-lg'>Mobile Number</lable>
-                                <input id='mnumber' value={number} onChange={handlenumber} placeholder='Number Must be 10 Digit' required className='h-10 w-80 px-1 outline-0 rounded-sm text-lg text-black' type='text'/>
+                                <input id='mnumber' value={number} autoComplete='off' onChange={handlenumber} placeholder='Number Must be 10 Digit' required className='h-10 w-80 px-1 outline-0 rounded-sm text-lg text-black' type='text'/>
                             {
                                 checknumber?<p className='text-red-500'>Phone Number Must be valid</p>:''
                             }
@@ -196,19 +196,19 @@ let signup = () => {
                         <div>
                              <div className='flex flex-col gap-2 bg-slate-950 rounded-sm px-5 py-2'>
                                 <lable htmlFor='district' className='text-white text-center text-lg'>District</lable>
-                                <input id='district' value={district} onChange={handleDistrict} placeholder='purnia..' required className='h-10 w-80 outline-0 rounded-sm px-1 text-lg text-black' type='text' />
+                                <input id='district' value={district} autoComplete='off' onChange={handleDistrict} placeholder='purnia..' required className='h-10 w-80 outline-0 rounded-sm px-1 text-lg text-black' type='text' />
                               { 
                               distirctcheck?<p className='text-red-500'>Enter Valid District</p>:''
                               }
                             </div>
                             <div className='flex flex-col gap-2 bg-slate-950 rounded-sm px-5 py-2'>
                                 <lable htmlFor='addres' className='text-white text-center text-lg'>Address</lable>
-                                <input id='addres' value={address} onChange={handleAddress} placeholder='Khoksibag...' required className='h-10 w-80 outline-0 rounded-sm px-1 text-lg text-black' type='text'/>
+                                <input id='addres' value={address} autoComplete='off' onChange={handleAddress} placeholder='Khoksibag...' required className='h-10 w-80 outline-0 rounded-sm px-1 text-lg text-black' type='text'/>
                              { addresscheck?<p className='text-red-500'>Enter the Valid Address</p>:''}
                             </div>
                             <div className='flex flex-col gap-2 bg-slate-950 rounded-sm px-5 py-2'>
                                 <lable htmlFor='pincode' className='text-white text-center text-lg'>PinCode</lable>
-                                <input id='pincode' value={pincode} onChange={handlepin} placeholder='Pin Code Must be 8 Digit' required className='h-10 w-80 outline-0 px-1 rounded-sm text-lg text-black' type='number'  />
+                                <input id='pincode' value={pincode} autoComplete='off' onChange={handlepin} placeholder='Pin Code Must be 8 Digit' required className='h-10 w-80 outline-0 px-1 rounded-sm text-lg text-black' type='number'  />
                               { checkpincode? <p className='text-red-500'>Enter The Valid PinCode</p>:''}
                             </div>
                             {/* <div className='flex flex-col gap-2 bg-slate-950 rounded-sm px-5 py-2'>
